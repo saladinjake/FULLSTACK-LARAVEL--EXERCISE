@@ -1,0 +1,112 @@
+{
+  "name": "frontend-tradition",
+  "version": "1.0.0",
+  "description": "from html to react, angular, vue js template",
+  "main": "app.js",
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          "transform-es2015-modules-commonjs"
+        ]
+      }
+    },
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-export-namespace-from",
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-proposal-throw-expressions",
+      "@babel/plugin-syntax-dynamic-import",
+      "@babel/plugin-transform-runtime"
+      
+    ]
+  },
+  "scripts": {
+    "build": "webpack --mode=development",
+    "watch": "webpack --mode=development --watch",
+    "start:dev": "webpack-dev-server --config ./webpack.config.dev.js --open --hot --port 4001",
+    "bundle": "npm install && npm run watch",
+    "production": "cross-env NODE_ENV=production webpack --mode=production",
+    "lint-sass": "sass-lint -v -q --format=compact",
+    "lint-js": "eslint --ext .js src/js/"
+  },
+  "author": "Saladin jake",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "ajv": "^6.10.0",
+    "autoprefixer": "^9.6.0",
+    "babel-loader": "^8.0.0-beta.0",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "copy-webpack-plugin": "^5.0.3",
+    "css-loader": "^3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-jest-enzyme": "^6.0.2",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.18.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.9.1",
+    "del": "^5.1.0",
+    "dotenv-webpack": "^1.7.0",
+    "file-loader": "^4.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "lint": "^0.7.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^2.0.0",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^4.1.3",
+    "webpack-visualizer-plugin": "^0.1.11",
+    "husky": "^1.3.1",
+    "image-webpack-loader": "^4.6.0",
+    "imagemin-jpeg-recompress": "^6.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "postcss-uncss": "^0.17.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.14.3",
+    "terser-webpack-plugin": "^1.3.0",
+    "through2": "^3.0.1",
+    "typescript": "^3.6.2",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "vinyl-named": "^1.1.0",
+    "regenerator-runtime": "^0.13.3",
+    "fork-ts-checker-webpack-plugin": "^1.5.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/polyfill": "^7.0.0-beta.51",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.0.0-beta.51",
+    "@babel/preset-stage-1": "^7.0.0",
+    "@babel/register": "^7.6.0",
+    "@types/html-webpack-plugin": "^3.2.1",
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.11.5",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.3",
+    "@types/webpack": "^4.39.1",
+    "@types/webpack-dev-server": "^3.1.7"
+  },
+  "dependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2"
+  }
+}
