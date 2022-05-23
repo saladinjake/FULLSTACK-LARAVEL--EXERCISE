@@ -54,9 +54,9 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'frontend' => env('APP_FRONTEND', 'https://questence.org'),
+    'frontend' => env('APP_FRONTEND', 'http://localhost:4001'),
 
-    'support_email' => env('APP_SUPPORT', 'https://questence.org'),
+    'support_email' => env('APP_SUPPORT', 'http://localhost:4001'),
 
     'asset_url' => env('ASSET_URL', null),
 

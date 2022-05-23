@@ -37,7 +37,7 @@ class ExpiredTokenRemover extends Command
      */
     public function handle()
     {
-        $this->info('Purging Questence Expired Tokens... 🚀');
+        $this->info('Purging  Expired Tokens... 🚀');
  
         $this->info('Expired Tokens Purged Successfully! 🔥');
     }
