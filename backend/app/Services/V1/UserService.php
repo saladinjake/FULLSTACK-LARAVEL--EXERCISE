@@ -52,6 +52,29 @@ class UserProfileService extends BaseService
     }
 
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        try {
+            $check = User::where('id', $id)->first();
+            if (! $check) {
+                return formatResponse(404, 'User does not exist.', false);
+            } else {
+                $user = User::where('id', $id)->first();
+                $user->delete($id);
+
+                return formatResponse(200, 'User account deleted successfully.', true);
+            }
+        } catch (Exception $e) {
+            return formatResponse(fetchErrorCode($e), get_class($e).': '.$e->getMessage());
+        }
+    }
+
     
     public function getUser($id)
     {
@@ -69,6 +92,9 @@ class UserProfileService extends BaseService
     public function aRole($user) {
       return Role::where('name', '=', $user)->first();
     }
+
+
+
 
 
 }
