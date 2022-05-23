@@ -1,3 +1,5 @@
+
+
 .content-page {
   margin-left: 240px;
   overflow: hidden;
@@ -78,4 +80,18 @@
 .leafy{
 	background: #ebeff2;
 	padding:20px;
+}
+
+
+/*  Contact */
+.contact-search .btn-white {
+  position: absolute;
+  top: 18px;
+  right: 21px;
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 16px;
+  box-shadow: none !important;
+  outline: none !important;
+  color: #98a6ad;
 }

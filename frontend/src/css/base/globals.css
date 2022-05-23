@@ -308,3 +308,18 @@ a:focus {
   height: 88px;
   width: 88px;
 }
+
+
+
+/* Footer */
+.footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  bottom: 0px;
+  color: #58666e;
+  text-align: left !important;
+  padding: 20px 30px;
+  position: absolute;
+  right: 0px;
+  left: 240px;
+  font-size: 13px;
+}
