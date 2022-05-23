@@ -78,7 +78,7 @@ class UserProfileService extends BaseService
 
 
 
-    public function register(CreateUserRequest $request)
+    public function create(CreateUserRequest $request)
     {
         try {
             $input = $request->validated();
@@ -114,6 +114,8 @@ class UserProfileService extends BaseService
             return formatResponse(fetchErrorCode($e), get_class($e).': '.$e->getMessage());
         }
     }
+
+    public function update(CreateUserRequest $request, $id){}
 
 
     
