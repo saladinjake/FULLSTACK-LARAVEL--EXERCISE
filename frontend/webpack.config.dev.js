@@ -3,7 +3,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.config.common.js');
 const Dotenv = require('dotenv-webpack');
 
-const back =JSON.stringify('localhost:8080/api/v1')
+const back =JSON.stringify('localhost:8000/api/v1')
 const front = JSON.stringify('localhost:4001')
 
 module.exports = merge(common, {
@@ -19,7 +19,7 @@ module.exports = merge(common, {
   new Dotenv(),
     new webpack.DefinePlugin({
       'process.env': {
-        API_URL: JSON.stringify('localhost:4001/api/v1'),
+        API_URL: JSON.stringify('localhost:8000/api/v1'),
         DEPLOY_FRONT_URL: front,
         DEPLOY_BACK_URL: back,
       }
