@@ -1,0 +1,51 @@
+.content-page {
+  margin-left: 240px;
+  overflow: hidden;
+}
+.content-page > .content {
+  margin-bottom: 60px;
+  margin-top: 1px;
+  padding: 20px 5px 15px 5px;
+}
+
+ .horizontal-tabs{
+    height:100px;
+ 	border-bottom:2px solid #eaeaea;
+ 	display:flex;
+ 	flex:0.3;
+ 	justify-content: space-between;
+ }
+
+.left-component{
+    display:flex;   
+    flex-basis:40%;
+           
+}
+
+.icon-spacing{
+	margin-right:10px;
+}
+     	 
+
+.right-component{
+  display: flex;
+  flex-basis:60%;
+  justify-content: flex-end;
+}
+
+.icon1,.icon2,.icon3,.icon4,.icon5,.icon6, .hambugger{
+	 display: inline-block;
+	background-color: var(--c-titan-white);
+	color: var(--c-indigo);
+	font-weight: 600;
+	font-size: 15px;
+	padding: 0.5em 0.75em;
+	line-height: 1;
+	border-radius: 6px;
+}
+
+
+
+.btn-primary{
+	background:darkgreen;
+}
