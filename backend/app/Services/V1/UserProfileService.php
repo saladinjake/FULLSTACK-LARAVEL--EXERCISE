@@ -115,7 +115,9 @@ class UserProfileService extends BaseService
         }
     }
 
-    public function update(CreateUserRequest $request, $id){}
+    public function update(CreateUserRequest $request, $id){
+
+    }
 
 
     
@@ -135,6 +137,9 @@ class UserProfileService extends BaseService
     public function aRole($user) {
       return Role::where('name', '=', $user)->first();
     }
+
+
+    public function fetchMany($begin, $perPage, $sortBy, $sortDirection){}
 
 
 

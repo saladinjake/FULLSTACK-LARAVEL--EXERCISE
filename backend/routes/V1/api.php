@@ -13,7 +13,7 @@ Route::prefix('v1')->group(function () {
   Route::get('/', function () {
     return formatResponse(200, 'BINGHR API Homepage', true);
   });
-  Route::get('users', 'UserController@index');
+  Route::get('users', 'UsersController@index');
 //   Route::get('/users/{id}/edit', 'UserController@show');
 //   Route::post('/users/{id}', 'UserController@store');
 //   Route::put('/users/{id}/edit', 'UserController@update');

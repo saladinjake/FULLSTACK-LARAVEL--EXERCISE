@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
-use App\Services\V1\UserService;
+use App\Services\V1\UserProfileService;
 use App\Http\Requests\CreateUserRequest;
 use Illuminate\Http\Request;
 
@@ -11,9 +11,9 @@ class UsersController extends Controller
 {
   public $users;
 
-  public function __construct(UserService $users)
+  public function __construct(UserProfileService $users)
   {
-    $this->users = $user;
+    $this->users = $users;
   }
 
   /**
@@ -95,9 +95,9 @@ class UsersController extends Controller
    *     @OA\Response(response="422", description="The given data was invalid.")
    * )
    */
-  public function show($slug)
+  public function show($userId)
   {
-      return $this->blog->fetchOne($slug);
+      return $this->users->fetchOne($userId);
   }
 
   /**
