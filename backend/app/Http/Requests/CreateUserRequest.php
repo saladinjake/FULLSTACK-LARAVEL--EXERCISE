@@ -14,7 +14,8 @@ class CreateLearnerRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+         //change to true if login is required
+        return false;
     }
 
     /**
@@ -24,9 +25,6 @@ class CreateLearnerRequest extends FormRequest
      */
     public function rules()
     {
-        // $type = [
-        //     'Learner', 'Instructor',
-        // ];
 
         return [
             'first_name' => 'required|max:150|string',
@@ -42,7 +40,7 @@ class CreateLearnerRequest extends FormRequest
     {
         return [
             'password.regex' => 'Password should have a minimum of eight characters and at least one letter and one number',
-            // 'account_type.in' => 'Required account type include Learner, or Instructor.',
+            
         ];
     }
 }

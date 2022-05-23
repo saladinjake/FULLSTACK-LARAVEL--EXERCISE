@@ -4,8 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Services\V1\UserService;
-use App\Http\Requests\CreateBlogRequest;
-use App\Http\Requests\UpdateBlogRequest;
+use App\Http\Requests\CreateUserRequest;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -64,10 +63,10 @@ class UsersController extends Controller
    *
    * Store a newly created resource in storage.
    *
-   * @param  \Illuminate\Http\CreateBlogRequest $request
+   * @param  \Illuminate\Http\CreateUserRequest $request
    * @return \Illuminate\Http\Response
    */
-  public function store(CreateBlogRequest $request)
+  public function store(CreateUserRequest $request)
   {
       return $this->users->create($request);
   }
@@ -142,12 +141,12 @@ class UsersController extends Controller
    * Update the specified resource in storage.
    *
    * @param  \Illuminate\Http\UpdateUserRequest $request
-   * @param  \App\Models\User $blog
+   * @param  \App\Models\User $user
    * @return \Illuminate\Http\Response
    */
-  public function update(UpdateBlogRequest $request, int $id)
+  public function update(UpdateUserRequest $request, int $id)
   {
-      return $this->blog->update($request, $id);
+      return $this->users->update($request, $id);
   }
 
   /**
@@ -186,6 +185,6 @@ class UsersController extends Controller
    */
   public function destroy(int $id)
   {
-      return $this->blog->delete($id);
+      return $this->users->delete($id);
   }
 }
