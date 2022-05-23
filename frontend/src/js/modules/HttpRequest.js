@@ -1,60 +1,10 @@
 import { API_URL } from "../config/Config"
-
-const deleteUser =(id) =>{
-  let recordUrl = API_URL + "/users/"+ id+"/delete";
-  
-   let loader = document.querySelector('.loader');
-  
-  loader.style.display = 'block';
-
-  fetch(recordUrl, {
-      method: 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        
-      }
-    })
-    .then(response => response.json())
-    .then((data) => {
-      if (data.status === 202) {
-        loader.style.display = 'none';
-       
-        const recordType = data.data[0].type;
-        window.location.reload()
-        
-      }
-    });
-}
-const getId = (user) => {
-      localStorage.setItem('Id', user.getAttribute("id"));
-      localStorage.setItem('actionType', user.getAttribute("mode"));
-     
-     if(user.getAttribute("mode")=="delete"){
-     	let id = user.getAttribute("id");
-        deleteUser(id);
-     }else{
-     	//file the display form
-     }
-}
-
-
-const displayError = (message) => {
-  const para = document.createElement('p');
-  para.textContent = message;
-  para.style.color = 'red';
-  para.style.paddingBottom = '8px';
-  msgDiv.appendChild(para);
-};
-
-function getAllCheckedValuesOf(name) {
-  var checkeds = document.querySelectorAll('input[name="' + name + '"]:checked'),
-    values = [];
-  checkeds.forEach(function(chkd) {
-    values.push(chkd.value);
-  });
-  return values;
-}
+import { 
+	deleteUser, 
+	getId, 
+	displayError, 
+	getAllCheckedValuesOf 
+} from "../helpers/index"
 
 class HttpRequest{
 	constructor(){
@@ -65,13 +15,8 @@ class HttpRequest{
 	  this.handleDisplay();
 	  const reportForm = document.getElementById("newUser")
       reportForm.addEventListener('submit', that.postRecord);
-	  this.handleEdit();
-	  this.handleDelete();
-
+	 
 	}
-
-    
-
 
     handleDisplay(){ 
       this.url = API_URL+"/users";
@@ -154,7 +99,7 @@ class HttpRequest{
 	      let superAdminPreviledges = getAllCheckedValuesOf("super_admins");
 	      let adminPreviledges = getAllCheckedValuesOf("admins");
 	      let employeesPreviledges = getAllCheckedValuesOf("employees");
-	      let hrPreviledges = getAllCheckedValuesOf("hrs");
+	      let hrPreviledges = getAllCheckedValuesOf("hr_admins");
 	  
 		  if (!(firstname && firstname.trim().length)) {
 		    return displayError('Please enter a firstname');

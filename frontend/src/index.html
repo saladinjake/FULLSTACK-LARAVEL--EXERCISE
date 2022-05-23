@@ -336,42 +336,42 @@
   <div class="modal-content col-md-8">
     <span class="close-button">&times;</span>
     <h2>Add User</h2>
-    <form role="form">
+    <form role="form" id="reportForm">
 
 						<div class="form-group col-sm-12">
 							
-							<input type="text" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input type="text" class="form-control" id="employeeId" placeholder="Employee ID *">
 						</div>
 
 						<div class="form-group col-sm-6">
 							
-							<input type="text" class="form-control" id="inputColor" placeholder="Firstname*">
+							<input type="text" class="form-control" id="firstname" placeholder="Firstname*">
 						</div>
 
 						<div class="form-group col-sm-6">
 							
-							<input type="text" class="form-control" id="inputColor" placeholder="Lastname *">
+							<input type="text" class="form-control" id="lastname" placeholder="Lastname *">
 						</div>
 
 
 						<div class="form-group col-sm-4">
 							
-							<input type="text" class="form-control" id="inputColor" placeholder="Email ID *">
+							<input type="text" class="form-control" id="email" placeholder="Email ID *">
 						</div>
 
 						<div class="form-group col-sm-4">
 							
-							<input type="text" class="form-control" id="inputColor" placeholder="Mobile Number *">
+							<input type="text" class="form-control" id="mobilePhone" placeholder="Mobile Number *">
 						</div>
 
 						<div class="form-group col-sm-4">
 								
 								<select class="form-control" id="role" data-style="btn-white" tabindex="-98">
-										<option>SuperAdmin</option>
-										<option>Admin</option>
-										<option>Hr</option>
-										<option>User</option>
-										<option>Management</option>
+										<option value="1">SuperAdmin</option>
+										<option value="2">Admin</option>
+										<option value="3">Hr Admin</option>
+										<option value="4">Employee</option>
+										
 									</select>
 						</div>
 						
@@ -380,16 +380,16 @@
 					<div class="clearfix"></div>
 						<div class="form-group col-sm-4 pull-left">
 							
-							<input type="text" class="form-control" id="" placeholder="Username*">
+							<input type="text" class="form-control" id="username" placeholder="Username*">
 						</div>
                     
                     <div class="form-group col-sm-4">
                            
-                            <input type="password" class="form-control" id="inputYear" placeholder="Password*">
+                            <input type="password" class="form-control" id="password" placeholder="Password*">
                     </div>
                      <div class="form-group col-sm-4">
                            
-                            <input type="password" class="form-control" id="inputYear" placeholder="Confirm Password*">
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password*">
                     </div>
                     
 
@@ -415,13 +415,13 @@
 		<td><a href="" class=""><b>Super Admin</b></a></td>
 		<td>
 							
-							<input type="checkbox" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input name="super_admins" type="checkbox" class="form-control"  placeholder="Employee ID *">
 						
 		</td>
 		<td>
 			
 							
-							<input type="checkbox" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input name="super_admins" type="checkbox" class="form-control"  placeholder="Employee ID *">
 						
 					</td>
 		
@@ -429,7 +429,7 @@
 		<td>
 			
 							
-							<input type="checkbox" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input name="super_admins" type="checkbox" class="form-control" placeholder="Employee ID *">
 						
 		</td>
 	</tr>
@@ -439,13 +439,13 @@
 		<td><a href="" class=""><b>Admin</b></a></td>
 		<td>
 							
-							<input type="checkbox" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input name="admins" type="checkbox" class="form-control"  placeholder="Employee ID *">
 						
 		</td>
 		<td>
 			
 							
-							<input type="checkbox" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input name="admins" type="checkbox" class="form-control"  placeholder="Employee ID *">
 						
 					</td>
 		
@@ -453,7 +453,7 @@
 		<td>
 			
 							
-							<input type="checkbox" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input name="admins" type="checkbox" class="form-control"  placeholder="Employee ID *">
 						
 		</td>
 	</tr>
@@ -463,13 +463,13 @@
 		<td><a href="" class=""><b>Employee</b></a></td>
 		<td>
 							
-							<input type="checkbox" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input name="employees" type="checkbox" class="form-control"  placeholder="Employee ID *">
 						
 		</td>
 		<td>
 			
 							
-							<input type="checkbox" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input name="employees" type="checkbox" class="form-control"  placeholder="Employee ID *">
 						
 					</td>
 		
@@ -477,7 +477,7 @@
 		<td>
 			
 							
-							<input type="checkbox" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input name="employees" type="checkbox" class="form-control"  placeholder="Employee ID *">
 						
 		</td>
 	</tr>
@@ -487,13 +487,13 @@
 		<td><a href="" class=""><b>Hr Admin</b></a></td>
 		<td>
 							
-							<input type="checkbox" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input type="checkbox" class="form-control" name="hr_admins" placeholder="Employee ID *">
 						
 		</td>
 		<td>
 			
 							
-							<input type="checkbox" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input type="checkbox" class="form-control" name="hr_admins" placeholder="Employee ID *">
 						
 					</td>
 		
@@ -501,7 +501,7 @@
 		<td>
 			
 							
-							<input type="checkbox" class="form-control" id="inputColor" placeholder="Employee ID *">
+							<input type="checkbox" class="form-control" name="hr_admins" placeholder="Employee ID *">
 						
 		</td>
 	</tr>
