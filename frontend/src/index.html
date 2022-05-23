@@ -165,13 +165,14 @@ data-toggle="dropdown" aria-expanded="true">
 
 
 
-          <div class="horizontal-tabs">
+          <div class="horizontal-tabs ">
 			 <div class="left-component">
 			           	 <h4 class="m-t-0 header-title icon-spacing"><b>Users</b></h4>
-              <form role="form icon-spacing">
+              <form role="form icon-spacing" style="margin-right:10px">
 				<div class="form-group contact-search m-b-30">
 					<select type="text" id="search" class="form-control"
 						placeholder="Search...">
+						<option>Year...</option>
 					</select>
 				</div> <!-- form-group -->
 			</form>
@@ -231,11 +232,24 @@ data-toggle="dropdown" aria-expanded="true">
 <div class="card-box">
 
 
-
-
+  <div class="horizontal-tabs">
+			 <div class="left-component">
+			           	 <h4 class="m-t-0 header-title icon-spacing"><b>List Users</b></h4>
+			  </div>
+			  <div class="right-component">
+                  <form role="form icon-spacing">
+				<div class="form-group contact-search m-b-30">
+					<input type="text" id="search" class="form-control"
+						placeholder="Search...">
+					<button type="submit" class="btn btn-white"><i
+							class="fa fa-search"></i></button>
+				</div> <!-- form-group -->
+			</form>
+			  </div>
+</div>
 <div class="table-responsive">
 <table class="table table-hover  m-0 table table-actions-bar">
-<thead>
+<thead class="leafy">
 		
 		<th>Name</th>
 		<th>Created</th>

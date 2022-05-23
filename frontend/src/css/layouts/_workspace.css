@@ -9,7 +9,7 @@
 }
 
  .horizontal-tabs{
-    height:100px;
+    height:50px;
  	border-bottom:2px solid #eaeaea;
  	display:flex;
  	flex:0.3;
@@ -48,4 +48,34 @@
 
 .btn-primary{
 	background:darkgreen;
+}
+
+
+
+
+/* Table type box */
+.table-box {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+.table-box .table-detail {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* Card Box */
+.card-box {
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-clip: padding-box;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+}
+
+.leafy{
+	background: #ebeff2;
+	padding:20px;
 }

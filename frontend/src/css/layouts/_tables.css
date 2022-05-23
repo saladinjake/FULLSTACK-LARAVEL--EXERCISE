@@ -1,0 +1,70 @@
+
+.table > thead > tr > td.middle-align,
+.table > tbody > tr > td.middle-align,
+.table > .tfood > tr > td.middle-align,
+.table > thead > tr > th.middle-align,
+.table > tbody > tr > th.middle-align,
+.table > .tfood > tr > th.middle-align {
+  vertical-align: middle;
+}
+
+
+.table {
+  margin-bottom: 10px;
+}
+.table-striped > tbody > tr:nth-of-type(odd),
+.table-hover > tbody > tr:hover,
+.table > thead > tr > td.active,
+.table > tbody > tr > td.active,
+.table > tfoot > tr > td.active,
+.table > thead > tr > th.active,
+.table > tbody > tr > th.active,
+.table > tfoot > tr > th.active,
+.table > thead > tr.active > td,
+.table > tbody > tr.active > td,
+.table > tfoot > tr.active > td,
+.table > thead > tr.active > th,
+.table > tbody > tr.active > th,
+.table > tfoot > tr.active > th {
+  background-color: #f4f8fb !important;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td,
+.table > thead > tr > th,
+.table-bordered {
+  border-top: 1px solid #ebeff2;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+  border: 1px solid #ebeff2;
+}
+.table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ebeff2;
+}
+tbody {
+  color: #797979;
+}
+th {
+  color: #666666;
+  font-weight: 600;
+}
+.table-bordered {
+  border: 1px solid #ebeff2;
+}
+table.focus-on tbody tr.focused th {
+  background-color: #7e57c2;
+  color: #ffffff;
+}
+table.focus-on tbody tr.focused td {
+  background-color: #7e57c2;
+  color: #ffffff;
+}
