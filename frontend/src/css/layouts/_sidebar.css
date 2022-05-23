@@ -17,7 +17,7 @@
   flex:2.3;
   height:100vh;
   
-  background: darkblue;
+  background: #1E90FF;
   display: flex;
  
 }
@@ -359,3 +359,19 @@ body.fixed-left .side-menu.left {
 #wrapper.enlarged #sidebar-menu > ul > li:hover > a.active :after {
   display: none;
 }
+
+
+
+/* ============
+Avatar CSS
+===========*/
+
+.avatar {
+
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+}
+
