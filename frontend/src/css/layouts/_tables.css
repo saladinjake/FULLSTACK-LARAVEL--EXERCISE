@@ -68,3 +68,10 @@ table.focus-on tbody tr.focused td {
   background-color: #7e57c2;
   color: #ffffff;
 }
+
+
+table tbody tr a{
+	color:#000;
+	font-size:12px;
+}
+

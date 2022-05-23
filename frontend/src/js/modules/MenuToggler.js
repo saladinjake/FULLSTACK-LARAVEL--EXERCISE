@@ -3,9 +3,9 @@ const getDom = (expr) =>{
 }
 class MenuToggler{
 	constructor(){
-	  this.getDombody = getDom('body');
-      this.getDomopenLeftBtn = getDom('.open-left');
-      this.getDommenuItem = getDom('#sidebar-menu a');
+	  this.$body = getDom('body');
+      this.$openLeftBtn = getDom('.open-left');
+      this.$menuItem = getDom('#sidebar-menu a');
 	}
 
    openLeftBar = () =>{
@@ -39,7 +39,7 @@ class MenuToggler{
   attachEvents(){
   	var ua = navigator.userAgent,
     event = ua.match(/iP/i) ? 'touchstart' : 'click';
-    $this = this;
+    let $this = this;
       //bind on click
     this.$openLeftBtn.addEventListener(event, function(e) {
       e.stopPropagation();
