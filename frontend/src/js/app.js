@@ -5,10 +5,10 @@ import HttpRequest from "./modules/HttpRequest"
 
 document.onreadystatechange = function() {
   /*Let the world know you were here*/ 
- 
   let Menu =  new MenuToggler();
+  let HttpEvents = new HttpRequest();
   Menu.attachEvents();
-   
+  HttpEvents.attachEvents();
 }
 
 
