@@ -1,6 +1,59 @@
 import { API_URL } from "../config/Config"
+
+const deleteUser =(id) =>{
+  let recordUrl = API_URL + "/users/"+ id+"/delete";
+  
+   let loader = document.querySelector('.loader');
+  
+  loader.style.display = 'block';
+
+  fetch(recordUrl, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        
+      }
+    })
+    .then(response => response.json())
+    .then((data) => {
+      if (data.status === 202) {
+        loader.style.display = 'none';
+       
+        const recordType = data.data[0].type;
+        window.location.reload()
+        
+      }
+    });
+}
 const getId = (user) => {
-      localStorage.setItem('Id', user.id);
+      localStorage.setItem('Id', user.getAttribute("id"));
+      localStorage.setItem('actionType', user.getAttribute("mode"));
+     
+     if(user.getAttribute("mode")=="delete"){
+     	let id = user.getAttribute("id");
+        deleteUser(id);
+     }else{
+     	//file the display form
+     }
+}
+
+
+const displayError = (message) => {
+  const para = document.createElement('p');
+  para.textContent = message;
+  para.style.color = 'red';
+  para.style.paddingBottom = '8px';
+  msgDiv.appendChild(para);
+};
+
+function getAllCheckedValuesOf(name) {
+  var checkeds = document.querySelectorAll('input[name="' + name + '"]:checked'),
+    values = [];
+  checkeds.forEach(function(chkd) {
+    values.push(chkd.value);
+  });
+  return values;
 }
 
 class HttpRequest{
@@ -8,8 +61,10 @@ class HttpRequest{
 		this.url = API_URL;
 	}
 	attachEvents(){
+		let that = this;
 	  this.handleDisplay();
-	  this.handleCreate();
+	  const reportForm = document.getElementById("newUser")
+      reportForm.addEventListener('submit', that.postRecord);
 	  this.handleEdit();
 	  this.handleDelete();
 
@@ -19,10 +74,10 @@ class HttpRequest{
 
 
     handleDisplay(){ 
-      this.url += "/users";
+      this.url = API_URL+"/users";
       window.addEventListener('load', (event) => {
 		  event.preventDefault();
-		  
+		  let loader = document.querySelector('.loader');
 		  const recordItems = document.querySelector('.users-lists');
 		  loader.style.display = 'block';
 
@@ -70,5 +125,108 @@ class HttpRequest{
 		    });
 	 });
     }
+
+
+
+    handleCreate(event){
+       	  this.url =API_URL+"/users";
+       	   event.preventDefault();
+	      const reportForm = document.getElementById('reportForm');
+	      const loader = document.querySelector('.loader');
+	      const msgDiv = document.getElementById('msg-error');
+	      const spinner = document.querySelector('.spinner');
+	      const spin = document.querySelector('.spin');
+
+
+	     
+	      const firstname = document.getElementById('firstname').value;
+	      const lastname = document.getElementById('lastname').value;
+	      const email = document.getElementById('email').value;
+	      const password = document.getElementById('password').value;
+	      const confirmPassword = document.getElementById('confirmPassword').value;
+	      const username = document.getElementById('username').value;
+	      const employeeId = document.getElementById('employeeId').value;
+	      const mobilePhone = document.getElementById('mobilePhone').value;
+	      
+	      const select = document.getElementById('role');
+	      const roleType = select.options[select.selectedIndex].value;
+	      
+	      let superAdminPreviledges = getAllCheckedValuesOf("super_admins");
+	      let adminPreviledges = getAllCheckedValuesOf("admins");
+	      let employeesPreviledges = getAllCheckedValuesOf("employees");
+	      let hrPreviledges = getAllCheckedValuesOf("hrs");
+	  
+		  if (!(firstname && firstname.trim().length)) {
+		    return displayError('Please enter a firstname');
+		  }
+		  if (!(lastname && lastname.trim().length)) {
+		    return displayError('Please enter a lastname');
+		  }
+		  if (!(email && email.trim().length)) {
+		    return displayError('Please enter an email');
+		  }
+
+		  if (!(username && username.trim().length)) {
+		    return displayError('Please enter a username');
+		  }
+
+		  if (!(employeeId && employeeId.trim().length)) {
+		    return displayError('Please enter an employee id');
+		  }
+
+		  if (!(roleType && roleType.trim().length)) {
+		    return displayError('Please select the user role');
+		  }
+
+	      
+	  
+		  
+
+	  const info = {
+	    firstname,
+	    lastname,
+	    email,
+	    password,
+	    confirmPassword,
+	    mobilePhone,
+	    employeeId,
+	    roleType,
+	    superAdminPreviledges,
+	    adminPreviledges,
+	    employeesPreviledges,
+	    hrPreviledges
+	  };
+	  
+	  loader.style.display = 'block';
+	  fetch(postUrl, {
+	      method: 'POST',
+	      headers: {
+	        Accept: 'application/json',
+	        'Content-Type': 'application/json',
+	        
+	      },
+	      mode: 'cors',
+	      body: JSON.stringify(info)
+	    })
+	    .then(response => response.json())
+	    .then((data) => {
+	      if (data.status === 201) {
+	        loader.style.display = 'none';
+	        resetForm();
+	        localStorage.setItem('urlType', postUrl);
+	        redirect(reportType);
+	      }  else {
+	        msgDiv.style.display = 'block';
+	        msgDiv.style.color = 'red';
+	        loader.style.display = 'none';
+	        msgDiv.innerHTML = data.error;
+	      }
+	    })
+	    .catch((error) => {
+	      throw error;
+	    });
+
+
+  }
 	
 }
