@@ -7,5 +7,6 @@
 
 /*base imports*/
 @import "base/globals.css";
-
+@import "base/_icons.css";
 /*layouts import*/
+@import "layouts/_sidebar.css";
