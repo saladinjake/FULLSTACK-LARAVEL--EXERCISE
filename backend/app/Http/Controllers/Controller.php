@@ -10,10 +10,10 @@ use Illuminate\Routing\Controller as BaseController;
 /**
  * @OA\Info(
  *      version="1.0.0",
- *      title="Questence API Documentation",
- *      description="Questence E-learning Platform Documentation",
+ *      title="API Documentation",
+ *      description="Application test exercise",
  *      @OA\Contact(
- *          email="technology@questence.org"
+ *          email="juwavictor@gmail.com"
  *      ),
  *      @OA\License(
  *          name="Apache 2.0",

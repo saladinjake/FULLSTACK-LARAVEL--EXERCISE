@@ -31,21 +31,21 @@ class RolesTableSeeder extends Seeder
                 'level'       => 8,
             ],
             [
-                'name'        => 'Business',
-                'slug'        => 'business',
+                'name'        => 'HrAdmin',
+                'slug'        => 'Hr',
                 'description' => 'Business Role',
                 'level'       => 7,
             ],
             [
-                'name'        => 'Partner',
-                'slug'        => 'partner',
+                'name'        => 'Developer',
+                'slug'        => 'developer',
                 'description' => 'Partner Role',
                 'level'       => 6,
             ],
             [
-                'name'        => 'Instructor',
-                'slug'        => 'instructor',
-                'description' => 'Instructor Role',
+                'name'        => 'Business Developer',
+                'slug'        => 'marketing',
+                'description' => 'Marketing  Role',
                 'level'       => 5,
             ],
             [
@@ -63,7 +63,7 @@ class RolesTableSeeder extends Seeder
             [
                 'name'        => 'TeamMember',
                 'slug'        => 'teammember',
-                'description' => 'Course Team member',
+                'description' => 'Team member',
                 'level'       => 3,
             ],
             [
@@ -73,8 +73,8 @@ class RolesTableSeeder extends Seeder
                 'level'       => 4,
             ],
             [
-                'name'        => 'User',
-                'slug'        => 'user',
+                'name'        => 'Employee',
+                'slug'        => 'employee',
                 'description' => 'User Role',
                 'level'       => 1,
             ],

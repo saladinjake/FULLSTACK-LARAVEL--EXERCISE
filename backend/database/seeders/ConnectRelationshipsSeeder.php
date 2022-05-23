@@ -36,16 +36,11 @@ class ConnectRelationshipsSeeder extends Seeder
         $roleAdmin = config('roles.models.role')::where('name', '=', 'Admin')->first();
         $roleAdmin->attachPermission($adminPerm);
 
-        //Learner/User Attachments
-        $userPerm = config('roles.models.permission')::where('name', '=', 'Can View Courses')->first();
-        $roleUser = config('roles.models.role')::where('name', '=', 'User')->first();
+        //User Attachments
+        $userPerm = config('roles.models.permission')::where('name', '=', 'Can View History')->first();
+        $roleUser = config('roles.models.role')::where('name', '=', 'Employee')->first();
         $roleUser->attachPermission($userPerm);
 
-        //Instructor Attachments
-        $coursePerm = config('roles.models.permission')::where('name', '=', 'Can Manage Courses')->first();
-        $programPerm = config('roles.models.permission')::where('name', '=', 'Can Manage Programs')->first();
-        $roleInstructor = config('roles.models.role')::where('name', '=', 'Instructor')->first();
-        $roleInstructor->attachPermission($coursePerm);
-        $roleInstructor->attachPermission($programPerm);
+        
     }
 }

@@ -15,14 +15,14 @@ class UsersTableSeeder extends Seeder
     {
         $superAdminRole = config('roles.models.role')::where('name', '=', 'SuperAdmin')->first();
         $adminRole = config('roles.models.role')::where('name', '=', 'Admin')->first();
-        $instructorRole = config('roles.models.role')::where('name', '=', 'Instructor')->first();
+        $instructorRole = config('roles.models.role')::where('name', '=', 'HrAdmin')->first();
         $hodRole = config('roles.models.role')::where('name', '=', 'Hod')->first();
         $userRole = config('roles.models.role')::where('name', '=', 'User')->first();
         $permissions = config('roles.models.permission')::all();
         $hodPerm = config('roles.models.permission')::where('name', '=', 'Can Manage Department')->first();
         $adminPerm = config('roles.models.permission')::where('name', '=', 'Can Manage Users')->first();
-        $userPerm = config('roles.models.permission')::where('name', '=', 'Can View Courses')->first();
-        $coursePerm = config('roles.models.permission')::where('name', '=', 'Can Manage Courses')->first();
+        $userPerm = config('roles.models.permission')::where('name', '=', 'Can View History')->first();
+        $coursePerm = config('roles.models.permission')::where('name', '=', 'Can Manage History')->first();
         $programPerm = config('roles.models.permission')::where('name', '=', 'Can Manage Programs')->first();
 
         /*
@@ -32,10 +32,10 @@ class UsersTableSeeder extends Seeder
         if (config('roles.models.defaultUser')::where('email', '=', 'superadmin@binghr.org')->first() === null) {
             $newUser = config('roles.models.defaultUser')::create([
                 'username' => 'Superuser',
-                'first_name'     => 'Binghr',
-                'last_name'     => 'Superadmin',
+                'firstname'     => 'Binghr',
+                'lastname'     => 'Superadmin',
                 'email'    => 'superadmin@binghr.org',
-                'phone_number' => '07000004278',
+                'mobilePhone' => '07000004278',
                 'password' => bcrypt('secret'),
                 'category' => 'SUP',
                 'email_verified_at' => date('Y-m-d h:i:s'),
@@ -49,10 +49,10 @@ class UsersTableSeeder extends Seeder
 
         if (config('roles.models.defaultUser')::where('email', '=', 'admin@questence.org')->first() === null) {
             $newUser = config('roles.models.defaultUser')::create([
-                'first_name'     => 'Binghr',
-                'last_name'     => 'Admin',
+                'firstname'     => 'Binghr',
+                'lastname'     => 'Admin',
                 'email'    => 'admin@binghr.org',
-                'phone_number' => '07000004278',
+                'mobilePhone' => '07000004278',
                 'password' => bcrypt('password'),
                 'category' => 'ADM',
                 'email_verified_at' => date('Y-m-d h:i:s'),
@@ -64,12 +64,12 @@ class UsersTableSeeder extends Seeder
 
         if (config('roles.models.defaultUser')::where('email', '=', 'instructor@questence.org')->first() === null) {
             $newUser = config('roles.models.defaultUser')::create([
-                'first_name'     => 'Hr',
-                'last_name'     => 'Guy',
+                'firstname'     => 'Hr',
+                'lastname'     => 'Guy',
                 'email'    => 'hr@binghr.org',
-                'phone_number' => '08130870416',
+                'mobilePhone' => '08130870416',
                 'password' => bcrypt('password'),
-                'category' => 'INS',
+                'category' => 'HRM',
                 'email_verified_at' => date('Y-m-d h:i:s'),
             ]);
 
@@ -78,29 +78,29 @@ class UsersTableSeeder extends Seeder
             $newUser->attachPermission($programPerm);
         }
 
-        // if (config('roles.models.defaultUser')::where('email', '=', 'hod@questence.org')->first() === null) {
-        //     $newUser = config('roles.models.defaultUser')::create([
-        //         'first_name'     => 'HOD',
-        //         'last_name'     => 'Guy',
-        //         'email'    => 'hod@questence.org',
-        //         'phone_number' => '07038797386',
-        //         'password' => bcrypt('password'),
-        //         'category' => 'LRN',
-        //         'email_verified_at' => date('Y-m-d h:i:s'),
-        //     ]);
+        if (config('roles.models.defaultUser')::where('email', '=', 'hod@bnghr.org')->first() === null) {
+            $newUser = config('roles.models.defaultUser')::create([
+                'firstname'     => 'HOD',
+                'lastname'     => 'Guy',
+                'email'    => 'hod@binghr.org',
+                'mobilePhone' => '07038797386',
+                'password' => bcrypt('password'),
+                'category' => 'HOD',
+                'email_verified_at' => date('Y-m-d h:i:s'),
+            ]);
 
-        //     $newUser->attachRole($hodRole);
-        //     $newUser->attachPermission($hodPerm);
-        // }
+            $newUser->attachRole($hodRole);
+            $newUser->attachPermission($hodPerm);
+        }
 
         if (config('roles.models.defaultUser')::where('email', '=', 'user@questence.org')->first() === null) {
             $newUser = config('roles.models.defaultUser')::create([
-                'first_name'     => 'User',
-                'last_name'     => 'Guy',
-                'email'    => 'user@questence.org',
-                'phone_number' => '07038797386',
+                'firstname'     => 'User',
+                'lastname'     => 'Guy',
+                'email'    => 'user@binghr.com',
+                'mobilePhone' => '07038797386',
                 'password' => bcrypt('password'),
-                'category' => 'LRN',
+                'category' => 'EMP',
                 'email_verified_at' => date('Y-m-d h:i:s'),
             ]);
 

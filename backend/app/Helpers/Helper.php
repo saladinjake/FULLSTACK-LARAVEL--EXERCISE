@@ -6,18 +6,12 @@
             return 'SuperAdmin';
         } elseif ($status == 'ADM') {
             return 'Admin';
-        } elseif ($status == 'LRN') {
-            return 'Learner';
-        } elseif ($status == 'INS') {
-            return 'Instructor';
-        } elseif ($status == 'BSN') {
-            return 'Business';
-        } elseif ($status == 'PTN') {
-            return 'Partner';
-        } elseif ($status == 'UNA') {
-            return 'Unassigned';
+        } elseif ($status == 'EMP') {
+            return 'Employee';
+        } elseif ($status == 'HR') {
+            return 'HR';
         } else {
-            return 'User';
+            return 'Employee';
         }
     }
 
