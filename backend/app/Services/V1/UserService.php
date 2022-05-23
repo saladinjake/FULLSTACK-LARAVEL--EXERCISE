@@ -9,6 +9,7 @@ use DB;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+use App\Http\Requests\CreateUserRequest;
 use jeremykenedy\LaravelRoles\Models\Role;
 
 class UserProfileService extends BaseService
@@ -74,6 +75,46 @@ class UserProfileService extends BaseService
             return formatResponse(fetchErrorCode($e), get_class($e).': '.$e->getMessage());
         }
     }
+
+
+
+    public function register(CreateUserRequest $request)
+    {
+        try {
+            $input = $request->validated();
+
+            DB::transaction(function () use ($input, &$user) {
+                $user = User::create([
+                    'firstname' => ucwords($input['firstname']),
+                    'lastname' => ucwords($input['lastname']),
+                    'mobilePhone' => $input['mobilePhone'],
+                    'email' => $input['email'],
+                    'password' => bcrypt($input['password'])
+                ]);
+
+                $role = Role::where('name', '=', ucwords($input['role']))->first();
+                $user->attachRole($role);
+                
+
+                
+            });
+
+            $user_roles = $user->roles;
+
+            $success['firstname'] = $user->firstname;
+            $success['lastname'] = $user->lastname;
+            $success['email'] = $user->email;
+            $success['mobilePhone'] = $user->mobilePhone;
+            $success['roles'] = $user_roles->makeHidden(['id','description','pivot','level','slug','created_at','updated_at','deleted_at']);
+            $success['token'] = $user->createToken('Personal Access Token')->accessToken;
+
+            return formatResponse(201, 'Learner Account Created Successfully.', true, $success);
+
+        } catch (Exception $e) {
+            return formatResponse(fetchErrorCode($e), get_class($e).': '.$e->getMessage());
+        }
+    }
+
 
     
     public function getUser($id)

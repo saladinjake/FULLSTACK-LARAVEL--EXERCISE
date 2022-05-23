@@ -15,8 +15,8 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, SoftDeletes, HasRoleAndPermission,
-     //HasApiTokens, 
-     MediaAlly;
+        HasApiTokens, 
+        MediaAlly;
 
     public function __construct(array $attributes = [])
     {
