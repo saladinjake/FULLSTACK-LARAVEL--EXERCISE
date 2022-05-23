@@ -380,17 +380,11 @@ Avatar CSS
 
 /*slide feature*/
 
-/* Push classes for body */
-/*.menu-pusher {
-  overflow-x: hidden;
-  position: relative;
-  left: 0;
-}*/
 
-.menu-pusher-right {
+/*.menu-pusher-right {
   left: 240px;
 }
 
 .menu-pusher, .menu-pusher-right {
   transition: 200ms ease-in-out;
-}
+}*/

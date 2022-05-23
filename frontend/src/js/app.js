@@ -1,3 +1,4 @@
+import Config from "./config/Config"
 import MenuToggler from "./modules/MenuToggler"
 import ModalAction from "./modules/ModalAction"
 import HttpRequest from "./modules/HttpRequest"
