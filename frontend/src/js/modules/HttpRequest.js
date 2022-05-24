@@ -132,6 +132,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 	    .then((data) => {
 	      if (typeof data.secure_url !== 'undefined') {
 	        this.imageUrl = data.secure_url;
+	        localStorage.setItem("imgurl",data.secure_url);
 	//         displayImages.innerHTML += `<li class="image-list">
 	//         <img src=${this.imageUrl} height="50" width="50" id="img"><span class="del-btn">&times;</span><i class="image-uploads" style="display:none">${imageUrl}</i>
 	// </li>`;
@@ -161,8 +162,6 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 	      const msgDiv = document.getElementById('msg-error');
 	      const spinner = document.querySelector('.spinner');
 	      const spin = document.querySelector('.spin');
-
-
 	     
 	      const firstname = document.getElementById('firstname').value;
 	      const lastname = document.getElementById('lastname').value;
@@ -172,7 +171,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 	      const username = document.getElementById('username').value;
 	      const employeeId = document.getElementById('employeeId').value;
 	      const mobilePhone = document.getElementById('mobilePhone').value;
-	      
+	      const avatar =  localStorage.getItem("imgurl"); // the api url for image stored in clouldinary
 	      const select = document.getElementById('role');
 	      const roleType = select.options[select.selectedIndex].value;
 	      
@@ -196,6 +195,11 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 		  }
 
 
+		  if (!(username && username.trim().length)) {
+		    return displayError('Please enter a username',msgDiv);
+		  }
+
+
 		  if (!(password && password.trim().length)) {
 		    return displayError('Please enter a password',msgDiv);
 		  }
@@ -210,17 +214,21 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 		    return displayError('Password comfirmation do not match',msgDiv);
 		  }
           
-          if (!(email.trim().length> 6)) {
-		    return displayError('Please enter a password greater than 6 digits',msgDiv);
-		  }
-		  if (!(username && username.trim().length)) {
-		    return displayError('Please enter a username',msgDiv);
+          if (!(password.trim().length > 4 )) {
+		    return displayError('Please enter a password greater than 4 in length',msgDiv);
 		  }
 
 
 		  if (!(roleType && roleType.trim().length)) {
 		    return displayError('Please select the user role',msgDiv);
 		  }
+
+
+
+		   if (!(avatar && avatar.trim().length)) {
+		    return displayError('Please select the user profile',msgDiv);
+		  }
+
 
 	      
 	  
@@ -235,6 +243,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 	    mobilePhone,
 	    employeeId,
 	    roleType,
+	    avatar,
 	    superAdminPreviledges,
 	    adminPreviledges,
 	    employeesPreviledges,
@@ -242,6 +251,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 	  };
 	  
 	  loader.style.display = 'block';
+	  let postUrl = API_URL + "/users";
 	  fetch(postUrl, {
 	      method: 'POST',
 	      headers: {
@@ -254,11 +264,9 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 	    })
 	    .then(response => response.json())
 	    .then((data) => {
-	      if (data.status === 201) {
+	    	console.log(data)
+	      if (data) {
 	        loader.style.display = 'none';
-	        resetForm();
-	        localStorage.setItem('urlType', postUrl);
-	        redirect(reportType);
 	      }  else {
 	        msgDiv.style.display = 'block';
 	        msgDiv.style.color = 'red';

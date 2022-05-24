@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CreateLearnerRequest extends FormRequest
+class CreateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +15,7 @@ class CreateLearnerRequest extends FormRequest
     public function authorize()
     {
          //change to true if login is required
-        return false;
+        return true;
     }
 
     /**
@@ -27,11 +27,13 @@ class CreateLearnerRequest extends FormRequest
     {
 
         return [
-            'first_name' => 'required|max:150|string',
-            'last_name' => 'required|max:150|string',
+            'firstname' => 'required|max:150|string',
+            'lastname' => 'required|max:150|string',
             'email' => 'required|email|max:150|string|unique:users',
-            'password' => 'required|min:8|confirmed',
-            'phone_number' => 'required|max:20|unique:users',
+            'password' => 'required|min:6|confirmed',
+            'mobilePhone' => 'required|max:20|unique:users',
+            'employeeId' => 'required|max:150|string',
+            'avatar' => 'required|max:250|string',
             // 'account_type' => ['required', Rule::in($type)],
         ];
     }

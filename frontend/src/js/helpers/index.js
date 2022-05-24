@@ -190,9 +190,21 @@ export const interpreteUserCategory = ($status) =>
             return 'Admin';
         } else if ($status == 'EMP') {
             return 'Employee';
-        } else if ($status == 'HR') {
-            return 'HR';
-        } else {
+        } else if ($status == 'HRM') {
+            return 'HUMAN RESOURCE MANAGER';
+        } else if ($status == 'HOD') {
+            return 'Head of Department';
+        
+        } else if ($status == 'TML') {
+            return 'Team Leader';
+        
+        }else if ($status == 'TMM') {
+            return 'TEAM MEMBER';
+        
+        }else if ($status == 'SWE') {
+            return 'SENIOR SOFTWARE ENGINEER';
+        
+        }else {
             return 'Employee';
         }
     }

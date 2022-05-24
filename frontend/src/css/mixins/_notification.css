@@ -11,7 +11,7 @@
   padding: 8px 12px;
   margin: 16px;
   border-radius: 8px;
-  background: #F5F5F5;
+  background: red;
   cursor: pointer;
   box-shadow: 0 1px 6px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.19);
   animation-duration:  .3s;
@@ -39,7 +39,7 @@
 
 .toast-text {
   font-size: 14px;
-  color: #777;
+  color: #fff;
 }
 
 .toast-icon {

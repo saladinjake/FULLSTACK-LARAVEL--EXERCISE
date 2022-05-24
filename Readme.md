@@ -29,6 +29,7 @@ backend: php artisan serve
  - image upload to cloudinary server
  - search filter for user
  - profile avatar update via ajax
+ - vanilla js toast notification
 
 
 ## TASK ASSIGNMENT REVIEW 
