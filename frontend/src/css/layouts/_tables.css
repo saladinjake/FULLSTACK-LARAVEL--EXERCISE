@@ -78,6 +78,7 @@ table tbody tr a{
 
 
 .biodata{
+  padding:10px;
   display:flex;
   justify-content: space-between;
 }
@@ -88,5 +89,7 @@ table tbody tr a{
 }
 
 .rightbio{
-  padding:10px;
+  height:20px;
+  border-radius:5px;
+  text-align: center;
 }

@@ -32,6 +32,23 @@ class HttpRequest{
           let res =``;
 		  const record = (items) => {
 		    items.forEach((item) => {
+                let categoryRoles =interpreteUserCategory(item?.category);
+		    	let badge ="label ";
+		    	switch(categoryRoles){
+                  case "SuperAdmin":
+                     badge +="label-danger"
+                     break
+
+                  case "Employee":
+                     badge +="label-primary"
+                     break
+                  case "Admin":
+                     badge +="label-success"
+                     break;
+                  default:
+                     badge +="label-info" 
+
+		    	}
 		    let dateFormat = new Date(item?.created_at);
 		    const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -48,9 +65,9 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
      </div>
     
     </a> 
-    <p class="rightbio">${interpreteUserCategory(item?.category)}</p> </td>
+    <p class="rightbio ${badge}">${interpreteUserCategory(item?.category)}</p> </td>
     <td>${formattedDate}</td>
-    <td>${item?.category}</td>
+    <td>${interpreteUserCategory(item?.category)}</td>
     
     <td></td>
     <td>
