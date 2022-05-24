@@ -1,8 +1,8 @@
 ## full stack test exercise
 
 ## outcomes
-<img src="screenshots/sample1.JPG" width="128"/>
-<img src="screenshots/sample2.JPG" width="128"/>
+<img src="screenshots/sample1.JPG" width="800"/>
+<img src="screenshots/sample2.JPG" width="800"/>
 
 ##Step 1 RUNNING APPLICATION
 - CLONE THE REPO
