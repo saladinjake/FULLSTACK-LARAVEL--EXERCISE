@@ -195,6 +195,24 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 		    return displayError('Please enter an email',msgDiv);
 		  }
 
+
+		  if (!(password && password.trim().length)) {
+		    return displayError('Please enter a password',msgDiv);
+		  }
+
+
+		  if (!(confirmPassword && confirmPassword.trim().length)) {
+		    return displayError('Password comfirmation do not match',msgDiv);
+		  }
+
+
+		  if (!( confirmPassword== password)) {
+		    return displayError('Password comfirmation do not match',msgDiv);
+		  }
+          
+          if (!(email.trim().length> 6)) {
+		    return displayError('Please enter a password greater than 6 digits',msgDiv);
+		  }
 		  if (!(username && username.trim().length)) {
 		    return displayError('Please enter a username',msgDiv);
 		  }

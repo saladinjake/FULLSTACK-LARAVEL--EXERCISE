@@ -2,13 +2,13 @@ import Config from "./config/Config"
 import MenuToggler from "./modules/MenuToggler"
 import ModalAction from "./modules/ModalAction"
 import HttpRequest from "./modules/HttpRequest"
-document.onreadystatechange = function() {
+window.addEventListener('DOMContentLoaded',  function() {
   /*Let the world know you were here*/ 
   let Menu =  new MenuToggler();
   let HttpEvents = new HttpRequest();
   Menu.attachEvents();
   HttpEvents.attachEvents();
-}
+})
 
 
 
