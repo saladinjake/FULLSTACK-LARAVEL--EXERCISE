@@ -47,7 +47,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'status',
-        'category',
+        // 'category',
         'first_time_login', 'email_verified_at', 'updated_at', 'deleted_at',
     ];
 

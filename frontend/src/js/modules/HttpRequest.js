@@ -3,9 +3,10 @@ import {
 	deleteUser, 
 	getId, 
 	displayError, 
-	getAllCheckedValuesOf 
+	getAllCheckedValuesOf ,
+	interpreteUserCategory
 } from "../helpers/index"
-
+window.getId = getId;
 class HttpRequest{
 	constructor(){
 		this.url = API_URL;
@@ -20,7 +21,7 @@ class HttpRequest{
 
     handleDisplay(){ 
       this.url = API_URL+"/users";
-      // window.addEventListener('load', (event) => {
+      window.addEventListener('load', (event) => {
 		  event.preventDefault();
 		  let loader = document.querySelector('.loader');
 		  const recordItems = document.querySelector('.users-lists');
@@ -28,15 +29,30 @@ class HttpRequest{
           let res =``;
 		  const record = (items) => {
 		    items.forEach((item) => {
+		    let dateFormat = new Date(item?.created_at);
+		    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()] }, ${dateFormat.getFullYear()}`;
 		      const eachRecord = `<tr>
-    <td><a href="" class=""><b>${item?.firstname} ${item?.lastname}</b></a> <span class="label label-success">Admin</span></td>
-    <td>${item?.created_at}</td>
-    <td>${item?.role}</td>
+    <td  class="biodata">
+    <a href="" class="leftbio">
+    <div class="icon4">
+          <img src=""  class="img-circle avatar">
+          <b>${item?.firstname} ${item?.lastname}</b>
+    <p> ${item?.email}</p>
+     </div>
+    
+    </a> 
+    <p class="rightbio">${interpreteUserCategory(item?.category)}</p> </td>
+    <td>${formattedDate}</td>
+    <td>${item?.category}</td>
     
     <td></td>
     <td>
-      <a href="#" class="table-action-btn"><i data-id="${item?.id}" id="edit_${item.id}" onclick="getId(this)" class="fa fa-edit"></i></a>
-      <a href="#" class="table-action-btn"><i data-id="${item?.id}" id="delete_${item.id}" onclick="getId(this)" class="fa fa-trash"></i></a>
+      <a href="#" class="table-action-btn"><i data-role="edit" data-id="${item?.id}" id="edit_${item.id}" onclick="getId(this,event)" class="fa fa-edit"></i></a>
+      <a href="#" class="table-action-btn"><i data-role="delete" data-id="${item?.id}" id="delete_${item.id}" onclick="getId(this,event)" class="fa fa-trash"></i></a>
     </td>
   </tr>`
 
@@ -56,7 +72,7 @@ class HttpRequest{
 		    })
 		    .then(response => response.json())
 		    .then((data) => {
-		    	console.log(data.status)
+		    	//console.log(data.status)
 		      if (Array.isArray(data.data) && data.data.length>0) {
 		        let recordList = data.data;
 		        recordList = [...new Set(recordList)];
@@ -71,7 +87,7 @@ class HttpRequest{
 		    .catch((error) => {
 		      throw error;
 		    });
-	 // });
+	 });
     }
 
 

@@ -1,6 +1,7 @@
 import { API_URL } from "../config/Config"
 export const deleteUser =(id) =>{
    let recordUrl = API_URL + "/users/"+ id+"/delete";
+   alert(recordUrl)
    let loader = document.querySelector('.loader');
    loader.style.display = 'block';
    fetch(recordUrl, {
@@ -13,26 +14,27 @@ export const deleteUser =(id) =>{
     })
     .then(response => response.json())
     .then((data) => {
-      if (data.status === 202) {
+      //if (data.status === 202) {
         loader.style.display = 'none';
        
-        const recordType = data.data[0].type;
-        window.location.reload()
+         window.location.reload()
         
-      }
-    });
+      //}
+    }).catch(err=> console.log(err));
 }
-export const getId = (user) => {
+export const getId = (user,event) => {
+      event.preventDefault()
       localStorage.setItem('Id', user.getAttribute("id"));
       localStorage.setItem('actionType', user.getAttribute("mode"));
-     
-     if(user.getAttribute("mode")=="delete"){
-     	let id = user.getAttribute("id");
+     let id = user.getAttribute("data-id");
+     alert(user.getAttribute("data-role"))
+     if(user.getAttribute("data-role")=="delete"){
+     	
         deleteUser(id);
      }else{
      	//file the display form
-      let url =  API_URL+ `/users/${user.getAttribute("id")}/edit`
-      formRefill(prefetchRecord().data);
+      //let url =  API_URL+ `/users/${id}/edit`
+      //formRefill(prefetchRecord().data);
      }
 }
 
@@ -69,3 +71,19 @@ export const getAllCheckedValuesOf = (name) => {
 }
 
 
+
+
+export const interpreteUserCategory = ($status) =>
+    {
+        if ($status == 'SUP') {
+            return 'SuperAdmin';
+        } else if ($status == 'ADM') {
+            return 'Admin';
+        } else if ($status == 'EMP') {
+            return 'Employee';
+        } else if ($status == 'HR') {
+            return 'HR';
+        } else {
+            return 'Employee';
+        }
+    }

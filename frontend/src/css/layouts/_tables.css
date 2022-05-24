@@ -75,3 +75,18 @@ table tbody tr a{
 	font-size:12px;
 }
 
+
+
+.biodata{
+  display:flex;
+  justify-content: space-between;
+}
+
+.leftbio{
+  display:flex;
+  flex-direction: column;
+}
+
+.rightbio{
+  padding:10px;
+}
