@@ -27,7 +27,7 @@ backend: php artisan serve
 
 ## extra functionality/Features
  - image upload to cloudinary server
- - search filter for user
+ - 
  - profile avatar update via ajax
  - vanilla js toast notification
  - Api documentation

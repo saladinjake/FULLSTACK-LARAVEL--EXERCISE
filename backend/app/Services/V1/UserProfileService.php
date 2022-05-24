@@ -169,7 +169,7 @@ class UserProfileService extends BaseService
         } catch (Exception $e) {
             return formatResponse(fetchErrorCode($e), get_class($e).': '.$e->getMessage());
         }
-    }
+    
     }
 
 

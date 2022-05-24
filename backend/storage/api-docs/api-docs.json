@@ -1,0 +1,135 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Binghr Api Documentation",
+        "description": "Binghr Api Platform Documentation",
+        "contact": {
+            "email": "technology@binghr.org"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api/v1",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/users": {
+            "get": {
+                "tags": [
+                    "Inquiry"
+                ],
+                "summary": "Authority: Any | Get Users",
+                "operationId": "2a4851da67a1b5092743fa7e9c6ee1c4",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                   
+                                ],
+                                "properties": {
+                                    "firstname": {
+                                        "type": "string"
+                                    },
+                                    "lastname": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "category": {
+                                        "type": "string"
+                                    },
+                                    "mobilePhone": {
+                                        "type": "string"
+                                    }
+                                   
+                                },
+                                "type": "object",
+                                "example": {
+                                    
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Authority: None | New User",
+                "description": "Create a  user and retrieve user data.",
+                "operationId": "9926f2f07b61f3f85ac0dac14d7e832e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password",
+                                    "confirmPassword",
+                                    "firstname",
+                                    "lastname",
+                                    "email",
+                                    "roleType",
+                                    "mobilePhone"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "Your email address",
+                                    "password": "Your password"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful created user",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": "true",
+                                    "status_code": 200,
+                                    "token_type": "Bearer",
+                                    "expires_in": 1296000,
+                                    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJyJhdWQiOiIyIiwianRpIjoiNWJmNDY4OTFhYmJmYjk1YzQwN2E1MzNkZjMxNmEzNDMzZDBlZmI2ZDc4NmI0NmMwNjgwODFjODg0N2E3MDVjYTk4ZDNiMTVlODI1ZDcwYjQiLCJpYXQiaX0...."
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        }
+         
+    },
+    "security": [
+        []
+    ]
+}

@@ -23,26 +23,6 @@ function generatorId(){
 
 }
 
-function searchFilter(){
-  
-  let txtValue = null;
-  let searchBox = document.getElementById("search");
-  let key = searchBox.value.toLowerCase();
-  let table = document.getElementById("lists");
-  let tr = table.getElementsByTagName("tr");  
-  for (let i = 0; i < tr.length; i++) {
-    var rowContent = tr[i].textContent;    
-    rowContent = rowContent.replace(/[\s]+/g, ' ');
-    if (rowContent) {
-      if (rowContent.toLowerCase().includes(key)) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }  
-    
-  }
-}
 </script>
 </head>
 
@@ -303,7 +283,7 @@ function searchFilter(){
                   <form role="form icon-spacing">
 				<div class="form-group contact-search m-b-30">
 					<input type="text" id="search" class="form-control"
-						placeholder="Search..." onkeyup="searchFilter()">
+						placeholder="Search..." >
 					<button type="submit" class="btn btn-white"><i
 							class="fa fa-search"></i></button>
 				</div> <!-- form-group -->
