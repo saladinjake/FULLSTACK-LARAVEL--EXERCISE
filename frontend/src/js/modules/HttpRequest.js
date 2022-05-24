@@ -10,6 +10,7 @@ window.getId = getId;
 class HttpRequest{
 	constructor(){
 		this.url = API_URL;
+		this.imageUrl = null;
 	}
 	attachEvents(){
 	  let that = this;
@@ -18,7 +19,7 @@ class HttpRequest{
 	  const imageUpload = document.getElementById('image-upload');
       const reportForm = document.getElementById("newUser")
 	  imageUpload.addEventListener('change', that.uploadImage);
-      reportForm.addEventListener('submit', that.postRecord);
+      reportForm.addEventListener('submit', that.handleCreate);
 	 
 	}
 
@@ -130,13 +131,13 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 	    .then(response => response.json())
 	    .then((data) => {
 	      if (typeof data.secure_url !== 'undefined') {
-	        imageUrl = data.secure_url;
-	        displayImages.innerHTML += `<li class="image-list">
-	        <img src=${imageUrl} height="50" width="50" id="img"><span class="del-btn">&times;</span><i class="image-uploads" style="display:none">${imageUrl}</i>
-	</li>`;
+	        this.imageUrl = data.secure_url;
+	//         displayImages.innerHTML += `<li class="image-list">
+	//         <img src=${this.imageUrl} height="50" width="50" id="img"><span class="del-btn">&times;</span><i class="image-uploads" style="display:none">${imageUrl}</i>
+	// </li>`;
 	        spinner.style.display = 'none';
-	        imageUpload.value = '';
-	        // handleUploads();
+	        //imageUpload.value = '';
+	        ;
 	      } else {
 	        spinner.style.display = 'none';
 	        errMsg.style.display = 'block';
@@ -179,27 +180,28 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 	      let adminPreviledges = getAllCheckedValuesOf("admins");
 	      let employeesPreviledges = getAllCheckedValuesOf("employees");
 	      let hrPreviledges = getAllCheckedValuesOf("hr_admins");
+          
+          if (!(employeeId && employeeId.trim().length)) {
+		    return displayError('Please enter an employee id',msgDiv);
+		  }
 	  
 		  if (!(firstname && firstname.trim().length)) {
-		    return displayError('Please enter a firstname');
+		    return displayError('Please enter a firstname',msgDiv);
 		  }
 		  if (!(lastname && lastname.trim().length)) {
-		    return displayError('Please enter a lastname');
+		    return displayError('Please enter a lastname',msgDiv);
 		  }
 		  if (!(email && email.trim().length)) {
-		    return displayError('Please enter an email');
+		    return displayError('Please enter an email',msgDiv);
 		  }
 
 		  if (!(username && username.trim().length)) {
-		    return displayError('Please enter a username');
+		    return displayError('Please enter a username',msgDiv);
 		  }
 
-		  if (!(employeeId && employeeId.trim().length)) {
-		    return displayError('Please enter an employee id');
-		  }
 
 		  if (!(roleType && roleType.trim().length)) {
-		    return displayError('Please select the user role');
+		    return displayError('Please select the user role',msgDiv);
 		  }
 
 	      

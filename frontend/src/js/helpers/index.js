@@ -53,7 +53,7 @@ export const formRefill = (jsonData) => {
 }
 
 
-export const displayError = (message) => {
+export const displayError = (message,msgDiv) => {
   const para = document.createElement('p');
   para.textContent = message;
   para.style.color = 'red';
@@ -64,8 +64,11 @@ export const displayError = (message) => {
 export const getAllCheckedValuesOf = (name) => {
   var checkeds = document.querySelectorAll('input[name="' + name + '"]:checked'),
     values = [];
+    
   checkeds.forEach(function(chkd) {
-    values.push(chkd.value);
+    let keyValue ={}
+    keyValue[chkd.getAttribute("key")] =chkd.value
+    values.push(keyValue);
   });
   return values;
 }

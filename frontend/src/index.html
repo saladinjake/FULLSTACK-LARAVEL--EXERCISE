@@ -6,7 +6,21 @@
 <link rel="stylesheet" type="text/css" href="./css/app.css">
 
 <script type="text/javascript">
-	
+
+function generatorId(){
+    let getRandomString = function(length) {
+		let idGenerated = "";
+		let outcomes = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";		
+		for(let i = 0; i < length; i++) {
+			idGenerated += outcomes.charAt(Math.floor(Math.random() * outcomes.length));
+		}	
+		return idGenerated;
+	}
+	const randomizedId = getRandomString(10);
+	const elem = document.getElementById("employeeId").value = randomizedId;
+		
+
+}
 
 function searchFilter(){
   
@@ -355,10 +369,11 @@ function searchFilter(){
     <span class="close-button">&times;</span>
     <h2>Add User</h2>
     <form role="form" id="newUser">
-
+           <div id="msg-error"></div>
 						<div class="form-group col-sm-12">
 							
 							<input type="text" class="form-control" id="employeeId" placeholder="Employee ID *">
+							<div onclick="generatorId()" class="pull-right" style="cursor:pointer">Generate random id</div>
 						</div>
 
 						<div class="form-group col-sm-6">
@@ -539,7 +554,7 @@ function searchFilter(){
 
                     
                     <div class="pull-right">
-					<button type="submit" class="btn btn-default waves-effect waves-light m-l-10">Save</button>
+					<button type="submit" id="newUserBtn" class="btn btn-default waves-effect waves-light m-l-10">Save</button>
                     <button type="button" class="btn btn-white waves-effect waves-light m-l-10">Cancel</button>
                 </div>
                     
