@@ -5,12 +5,40 @@
 	
 <link rel="stylesheet" type="text/css" href="./css/app.css">
 
+<script type="text/javascript">
+	
+
+function searchFilter(){
+  
+  let txtValue = null;
+  let searchBox = document.getElementById("search");
+  let key = searchBox.value.toLowerCase();
+  let table = document.getElementById("lists");
+  let tr = table.getElementsByTagName("tr");  
+  for (let i = 0; i < tr.length; i++) {
+    var rowContent = tr[i].textContent;    
+    rowContent = rowContent.replace(/[\s]+/g, ' ');
+    if (rowContent) {
+      if (rowContent.toLowerCase().includes(key)) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }  
+    
+  }
+}
+</script>
+</head>
+
+<body>
+
 </head>
 
 
 
 <body class="fixed-left-void">
-
+<div class="loader"></div>
 <!-- Begin page -->
 <div id="wrapper">
 
@@ -260,7 +288,7 @@
                   <form role="form icon-spacing">
 				<div class="form-group contact-search m-b-30">
 					<input type="text" id="search" class="form-control"
-						placeholder="Search...">
+						placeholder="Search..." onkeyup="searchFilter()">
 					<button type="submit" class="btn btn-white"><i
 							class="fa fa-search"></i></button>
 				</div> <!-- form-group -->
@@ -268,7 +296,7 @@
 			  </div>
 </div>
 <div class="table-responsive">
-<table class="table table-hover  m-0 table table-actions-bar">
+<table id="lists" class="table table-hover  m-0 table table-actions-bar">
 <thead class="leafy">
 		
 		<th>Name</th>
@@ -279,18 +307,8 @@
 	</tr>
 </thead>
 
-<tbody>
-	<tr>
-		<td><a href="" class=""><b>saladinjake</b></a> <span class="label label-success">Admin</span></td>
-		<td>23/05/2022</td>
-		<td>Super admin</td>
-		
-		<td></td>
-		<td>
-			<a href="admin-detail.html" class="table-action-btn"><i class="fa fa-edit"></i></a>
-			<a href="#" class="table-action-btn"><i class="fa fa-trash"></i></a>
-		</td>
-	</tr>
+<tbody class="users-lists">
+	
 
 
 
@@ -521,7 +539,6 @@
 				</form>
   </div>
 </div>
-
 </body>
 </html>
 

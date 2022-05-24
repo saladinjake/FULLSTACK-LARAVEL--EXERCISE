@@ -13,23 +13,23 @@ class HttpRequest{
 	attachEvents(){
 		let that = this;
 	  this.handleDisplay();
-	  const reportForm = document.getElementById("newUser")
-      reportForm.addEventListener('submit', that.postRecord);
+	  // const reportForm = document.getElementById("newUser")
+   //    reportForm.addEventListener('submit', that.postRecord);
 	 
 	}
 
     handleDisplay(){ 
       this.url = API_URL+"/users";
-      window.addEventListener('load', (event) => {
+      // window.addEventListener('load', (event) => {
 		  event.preventDefault();
 		  let loader = document.querySelector('.loader');
 		  const recordItems = document.querySelector('.users-lists');
 		  loader.style.display = 'block';
-
+          let res =``;
 		  const record = (items) => {
 		    items.forEach((item) => {
 		      const eachRecord = `<tr>
-    <td><a href="" class=""><b>${item?.firsname} ${item?.lastname}</b></a> <span class="label label-success">Admin</span></td>
+    <td><a href="" class=""><b>${item?.firstname} ${item?.lastname}</b></a> <span class="label label-success">Admin</span></td>
     <td>${item?.created_at}</td>
     <td>${item?.role}</td>
     
@@ -40,11 +40,12 @@ class HttpRequest{
     </td>
   </tr>`
 
-		      recordItems.innerHTML += eachRecord;
+		      res+= eachRecord;
 		    });
+		    recordItems.innerHTML += res
 		  };
 
-		  fetch(redFlag, {
+		  fetch(this.url, {
 		      method: 'GET',
 		      headers: {
 		        Accept: 'application/json',
@@ -55,8 +56,10 @@ class HttpRequest{
 		    })
 		    .then(response => response.json())
 		    .then((data) => {
-		      if (data.status === 200) {
-		        const recordList = data.data[0].users;
+		    	console.log(data.status)
+		      if (Array.isArray(data.data) && data.data.length>0) {
+		        let recordList = data.data;
+		        recordList = [...new Set(recordList)];
 		        loader.style.display = 'none';
 		        record(recordList);
 		        console.log(data);
@@ -68,7 +71,7 @@ class HttpRequest{
 		    .catch((error) => {
 		      throw error;
 		    });
-	 });
+	 // });
     }
 
 
@@ -175,3 +178,5 @@ class HttpRequest{
   }
 	
 }
+
+export default HttpRequest

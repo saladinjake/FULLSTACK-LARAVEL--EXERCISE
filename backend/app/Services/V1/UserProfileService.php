@@ -37,8 +37,6 @@ class UserProfileService extends BaseService
             $user = User::where(['id' => $id])->first();
             if (! $user) {
                 return formatResponse(404, 'User doesn\'t exist!', false);
-            } elseif (! $user->hasRole('user')) {
-                return formatResponse(404, 'Provided user not found', false);
             } else {
 
                 $profile = User::where('id', $id)->first();

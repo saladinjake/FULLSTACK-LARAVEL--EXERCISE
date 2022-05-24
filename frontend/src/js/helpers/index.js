@@ -31,7 +31,23 @@ export const getId = (user) => {
         deleteUser(id);
      }else{
      	//file the display form
+      let url =  API_URL+ `/users/${user.getAttribute("id")}/edit`
+      formRefill(prefetchRecord().data);
      }
+}
+
+
+export const  prefetchRecord = async (url) =>{
+  const res = await fetch(url);
+  return res;
+} 
+export const formRefill = (jsonData) => {
+  const { elements } = document.querySelector('form')
+
+  for (const [ key, value ] of Object.entries(jsonData) ) {
+    const field = elements.namedItem(key)
+    field && (field.value = value)
+  }
 }
 
 
@@ -51,3 +67,5 @@ export const getAllCheckedValuesOf = (name) => {
   });
   return values;
 }
+
+

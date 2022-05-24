@@ -28,7 +28,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'first_name', 'middle_name', 'last_name', 'email', 'phone_number', 'password', 'status', 'image_url', 'category',
+        'username', 'first_name', 'middle_name', 'last_name', 'email', 'phone_number', 'password', 'status', 'image_url', 'category','created_at'
     ];
 
     /**
@@ -48,7 +48,7 @@ class User extends Authenticatable
         'remember_token',
         'status',
         'category',
-        'first_time_login', 'email_verified_at','created_at', 'updated_at', 'deleted_at',
+        'first_time_login', 'email_verified_at', 'updated_at', 'deleted_at',
     ];
 
     /**
