@@ -3,7 +3,6 @@
 namespace App\Models;
 
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Notifications\VerifyEmailNotification;
 use CloudinaryLabs\CloudinaryLaravel\MediaAlly; // for profile upload field
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -32,6 +31,15 @@ class User extends Authenticatable
     protected $fillable = [
         'username', 'firstname',  'lastname', 'email', 'mobilePhone', 'password', 'status', 'image_url', 'category',
     ];
+
+
+        /**
+     * Always return user details
+     *
+     * @var array
+     */
+    protected $with = [];
+
 
     
     /**
