@@ -64,7 +64,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
     <td  class="biodata">
     <a href="" class="leftbio">
     <div class="icon4">
-          <img src=""  class="img-circle avatar">
+          <img src="${item?.avatar}"  class="img-circle avatar">
           <b>${item?.firstname} ${item?.lastname}</b>
     <p> ${item?.email}</p>
      </div>
@@ -294,39 +294,39 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
     <div class="modal-content col-md-8">
         <span class="close-button" id="${"closeme_"+eachRecord.id}">&times;</span>
         <span id="msg-error"></span>
-        <h4>Add User</h4>
-        <form role="form" id="newUser">
+        <h4>Edit User</h4>
+        <form role="form" id="${eachRecord.id}newUser">
 
             <div class="form-group col-sm-12">
 
-                <input value="${eachRecord.employeeId}" type="text" class="form-control" id="employeeId" placeholder="Employee ID *">
+                <input value="${eachRecord.employeeId}" type="text" class="form-control" id="${eachRecord.id}employeeId" placeholder="Employee ID *">
                 
             </div>
 
             <div class="form-group col-sm-6">
 
-                <input value="${eachRecord.firstname}"  type="text" class="form-control" id="firstname" placeholder="Firstname*">
+                <input value="${eachRecord.firstname}"  type="text" class="form-control" id="${eachRecord.id}firstname" placeholder="Firstname*">
             </div>
 
             <div class="form-group col-sm-6">
 
-                <input value="${eachRecord.lastname}" type="text" class="form-control" id="lastname" placeholder="Lastname *">
+                <input value="${eachRecord.lastname}" type="text" class="form-control" id="${eachRecord.id}lastname" placeholder="Lastname *">
             </div>
 
 
             <div class="form-group col-sm-4">
 
-                <input value="${eachRecord.email}" type="text" class="form-control" id="email" placeholder="Email ID *">
+                <input value="${eachRecord.email}" type="text" class="form-control" id="${eachRecord.id}email" placeholder="Email ID *">
             </div>
 
             <div class="form-group col-sm-4">
 
-                <input value="${eachRecord.mobilePhone}" type="text" class="form-control" id="mobilePhone" placeholder="Mobile Number *">
+                <input value="${eachRecord.mobilePhone}" type="text" class="form-control" id="${eachRecord.id}mobilePhone" placeholder="Mobile Number *">
             </div>
 
             <div class="form-group col-sm-4">
 
-                <select class="form-control" id="role" data-style="btn-white" tabindex="-98">
+                <select class="form-control" id="${eachRecord.id}role" data-style="btn-white" tabindex="-98">
 										<option value="SUP">SuperAdmin</option>
 										<option value="ADM">Admin</option>
 										<option value="HRM">Hr Admin</option>
@@ -340,23 +340,24 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
             <div class="clearfix"></div>
             <div class="form-group col-sm-4 pull-left">
 
-                <input value="${eachRecord.username}" type="text" class="form-control" id="username" placeholder="Username*">
+                <input value="${eachRecord.username}" type="text" class="form-control" id="${eachRecord.id}username" placeholder="Username*">
             </div>
 
             <div class="form-group col-sm-4">
                 
-                <input  type="password" class="form-control" id="password" placeholder="Password*">
+                <input  type="password" class="form-control" id="${eachRecord.id}password" placeholder="Password*">
             </div>
             <div class="form-group col-sm-4">
 
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password*">
+                <input type="password" class="form-control" id="${eachRecord.id}confirmPassword" placeholder="Confirm Password*">
             </div>
 
             <div class="form-group image-msg col-sm-12">
                 <label for="file">File Type: Image</label>
 
-                <input type="file" accept="image/*" class="form-control" id="image-upload">
+                <input id="avatar_${eachRecord.id}" type="file" accept="image/*" class="form-control" id="image-upload">
                 <ul id="displayImages"></ul>
+                <p>old profile</p>
                 <img src="${eachRecord.avatar}"  style="width:40px;height:20px" />
             </div>
 
@@ -383,13 +384,13 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
                             <td><a href="" class=""><b>Super Admin</b></a></td>
                             <td>
 
-                                <input name="super_admins" type="checkbox" placeholder="Employee ID *">
+                                <input name="${eachRecord.id}super_admins" type="checkbox" placeholder="Employee ID *">
 
                             </td>
                             <td>
 
 
-                                <input name="super_admins" type="checkbox" placeholder="Employee ID *">
+                                <input name="${eachRecord.id}super_admins" type="checkbox" placeholder="Employee ID *">
 
                             </td>
 
@@ -397,7 +398,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
                             <td>
 
 
-                                <input name="super_admins" type="checkbox" placeholder="Employee ID *">
+                                <input name="${eachRecord.id}super_admins" type="checkbox" placeholder="Employee ID *">
 
                             </td>
                         </tr>
@@ -407,13 +408,13 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
                             <td><a href="" class=""><b>Admin</b></a></td>
                             <td>
 
-                                <input name="admins" type="checkbox" placeholder="Employee ID *">
+                                <input name="${eachRecord.id}admins" type="checkbox" placeholder="Employee ID *">
 
                             </td>
                             <td>
 
 
-                                <input name="admins" type="checkbox" placeholder="Employee ID *">
+                                <input name="${eachRecord.id}admins" type="checkbox" placeholder="Employee ID *">
 
                             </td>
 
@@ -421,7 +422,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
                             <td>
 
 
-                                <input name="admins" type="checkbox" placeholder="Employee ID *">
+                                <input name="${eachRecord.id}admins" type="checkbox" placeholder="Employee ID *">
 
                             </td>
                         </tr>
@@ -431,13 +432,13 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
                             <td><a href="" class=""><b>Employee</b></a></td>
                             <td>
 
-                                <input name="employees" type="checkbox" placeholder="Employee ID *">
+                                <input name="${eachRecord.id}employees" type="checkbox" placeholder="Employee ID *">
 
                             </td>
                             <td>
 
 
-                                <input name="employees" type="checkbox" placeholder="Employee ID *">
+                                <input name="${eachRecord.id}employees" type="checkbox" placeholder="Employee ID *">
 
                             </td>
 
@@ -445,7 +446,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
                             <td>
 
 
-                                <input name="employees" type="checkbox" placeholder="Employee ID *">
+                                <input name="${eachRecord.id}employees" type="checkbox" placeholder="Employee ID *">
 
                             </td>
                         </tr>
@@ -455,13 +456,13 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
                             <td><a href="" class=""><b>Hr Admin</b></a></td>
                             <td>
 
-                                <input type="checkbox" name="hr_admins" placeholder="Employee ID *">
+                                <input type="checkbox" name="${eachRecord.id}hr_admins" placeholder="Employee ID *">
 
                             </td>
                             <td>
 
 
-                                <input type="checkbox" name="hr_admins" placeholder="Employee ID *">
+                                <input type="checkbox" name="${eachRecord.id}hr_admins" placeholder="Employee ID *">
 
                             </td>
 
@@ -469,7 +470,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
                             <td>
 
 
-                                <input type="checkbox" name="hr_admins" placeholder="Employee ID *">
+                                <input type="checkbox" name="${eachRecord.id}hr_admins" placeholder="Employee ID *">
 
                             </td>
                         </tr>
@@ -482,7 +483,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 
 
             <div class="pull-right">
-                <button type="submit" id="newUserBtn" class="btn btn-default waves-effect waves-light m-l-10">Save</button>
+                <button type="submit" data-id="${eachRecord.id}" id="update_${eachRecord.id}" class="btn btn-default waves-effect waves-light m-l-10">Save</button>
                 <button type="button" class="btn btn-white waves-effect waves-light m-l-10" id="${"revert_"+eachRecord.id}">Cancel</button>
             </div>
 
@@ -491,6 +492,9 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 </div>`
 return template;
   }
+
+
+  
 	
 }
 

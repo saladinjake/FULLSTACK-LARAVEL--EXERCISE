@@ -1,4 +1,7 @@
 import { API_URL } from "../config/Config"
+
+
+
 export const deleteUser =(id) =>{
    let recordUrl = API_URL + "/users/"+ id+"/delete";
   
@@ -22,24 +25,6 @@ export const deleteUser =(id) =>{
       //}
     }).catch(err=> console.log(err));
 }
-export const viewEditMode = (id) =>{
-  alert("called"+ id)
-  //if(document.getElementById(id)){
-    const modal = document.getElementById("editme_"+id);
-    modal.classList.toggle("show-modal");
-    var closeButton = document.getElementById("closeme_"+id);
-    closeButton.addEventListener("click", ()=>{
-       modal.classList.remove("show-modal");
-    });
-// window.addEventListener("click", windowOnClick);
-var closeButton2 = document.getElementById("revert_"+id);
-
-   closeButton2.addEventListener("click", ()=>{
-       modal.classList.remove("show-modal");
-    });
-  //}
-}
-
 
 export const getId = (user,event) => {
       event.preventDefault()
@@ -185,6 +170,152 @@ export const displayError = (message,msgDiv) => {
   // });
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const handleUpdate = function(event,id){
+  alert(id)
+    
+      event.preventDefault();
+      //const reportForm = document.getElementById(`${id}`+'reportForm');
+      const loader = document.querySelector('.loader');
+      const msgDiv = document.getElementById('msg-error');
+      const spinner = document.querySelector('.spinner');
+      const spin = document.querySelector('.spin');
+     
+      const firstname = document.getElementById(`${id}`+'firstname').value;
+      const lastname = document.getElementById(`${id}`+'lastname').value;
+      const email = document.getElementById(`${id}`+'email').value;
+      const password = document.getElementById(`${id}`+'password').value;
+      const confirmPassword = document.getElementById(`${id}`+'confirmPassword').value;
+      const username = document.getElementById(`${id}`+'username').value;
+      const employeeId = document.getElementById(`${id}`+'employeeId').value;
+      const mobilePhone = document.getElementById(`${id}`+'mobilePhone').value;
+      const avatar =  localStorage.getItem("imgurl"); // the api url for image stored in clouldinary
+      const select = document.getElementById(`${id}`+'role');
+      const roleType = select.options[select.selectedIndex].value;
+      
+      let superAdminPreviledges = getAllCheckedValuesOf(`${id}`+"super_admins");
+      let adminPreviledges = getAllCheckedValuesOf(`${id}`+"admins");
+      let employeesPreviledges = getAllCheckedValuesOf(`${id}`+"employees");
+      let hrPreviledges = getAllCheckedValuesOf("hr_admins");
+        
+        if (!(employeeId && employeeId.trim().length) ) {
+      return displayError('Please enter an employee id',msgDiv);
+    }
+  
+    if (!(firstname && firstname.trim().length)) {
+      return displayError('Please enter a firstname',msgDiv);
+    }
+    if (!(lastname && lastname.trim().length)) {
+      return displayError('Please enter a lastname',msgDiv);
+    }
+    if (!(email && email.trim().length)) {
+      return displayError('Please enter an email',msgDiv);
+    }
+
+
+    if (!(username && username.trim().length)) {
+      return displayError('Please enter a username',msgDiv);
+    }
+
+
+    if (!(password && password.trim().length)) {
+      return displayError('Please enter a password',msgDiv);
+    }
+
+
+    if (!(confirmPassword && confirmPassword.trim().length)) {
+      return displayError('Password comfirmation do not match',msgDiv);
+    }
+
+
+    if (!( confirmPassword== password)) {
+      return displayError('Password comfirmation do not match',msgDiv);
+    }
+        
+        if (!(password.trim().length > 4 )) {
+      return displayError('Please enter a password greater than 4 in length',msgDiv);
+    }
+
+
+    if (!(roleType && roleType.trim().length)) {
+      return displayError('Please select the user role',msgDiv);
+    }
+
+
+
+     if (!(avatar && avatar.trim().length)) {
+      return displayError('Please select the user profile',msgDiv);
+    }
+
+
+      
+  
+    
+
+  const info = {
+    firstname,
+    lastname,
+    email,
+    password,
+    confirmPassword,
+    mobilePhone,
+    employeeId,
+    roleType,
+    avatar,
+    superAdminPreviledges,
+    adminPreviledges,
+    employeesPreviledges,
+    hrPreviledges
+  };
+  
+  loader.style.display = 'block';
+  let postUrl = API_URL+"/users/"+ id+"/edit";
+  fetch(postUrl, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        
+      },
+      mode: 'cors',
+      body: JSON.stringify(info)
+    })
+    .then(response => response.json())
+    .then((data) => {
+      let errors = data?.errors;
+      console.log(data)
+      if (!errors) {
+        loader.style.display = 'none';
+        window.location.reload()
+      }  else {
+        Object.keys(errors).forEach(keys =>{
+          displayError(errors[keys][0],msgDiv);
+        })
+      }
+    })
+    .catch((error) => {
+      throw error;
+    });
+
+}
+
+
 export const getAllCheckedValuesOf = (name) => {
   var checkeds = document.querySelectorAll('input[name="' + name + '"]:checked'),
     values = [];
@@ -195,6 +326,81 @@ export const getAllCheckedValuesOf = (name) => {
     values.push(keyValue);
   });
   return values;
+}
+
+
+
+
+const changeImage = (event) => {
+    const errMsg = document.querySelector('.image-msg');
+    let spinner = document.querySelector('.loader');
+      
+  spinner.style.display = 'block';
+    const displayImages = document.getElementById('displayImages');
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'yftnq9xd');
+    // eslint-disable-next-line no-undef
+    fetch('https://api.cloudinary.com/v1_1/djdsxql5q/image/upload', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then((data) => {
+        if (typeof data.secure_url !== 'undefined') {
+          
+          localStorage.setItem("imgurl",data.secure_url);
+  //         displayImages.innerHTML += `<li class="image-list">
+  //         <img src=${this.imageUrl} height="50" width="50" id="img"><span class="del-btn">&times;</span><i class="image-uploads" style="display:none">${imageUrl}</i>
+  // </li>`;
+          spinner.style.display = 'none';
+          //imageUpload.value = '';
+          ;
+        } else {
+          spinner.style.display = 'none';
+          errMsg.style.display = 'block';
+          errMsg.style.color = 'red';
+          errMsg.innerHTML = 'Image failed to upload';
+        }
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }
+   
+
+
+
+export const viewEditMode = (id) =>{
+  
+  
+    const modal = document.getElementById("editme_"+id);
+    modal.classList.toggle("show-modal");
+    var closeButton = document.getElementById("closeme_"+id);
+    closeButton.addEventListener("click", ()=>{
+       modal.classList.remove("show-modal");
+    });
+    // window.addEventListener("click", windowOnClick);
+    var closeButton2 = document.getElementById("revert_"+id);
+
+   closeButton2.addEventListener("click", ()=>{
+       modal.classList.remove("show-modal");
+    });
+
+   // HANDLE UPLOAD OF IMAGE AVATAR IN EDIT MODE
+  var imageHandler = document.getElementById("avatar_"+id);
+  imageHandler.addEventListener("change",(evt) =>{
+       changeImage(evt)
+  })
+
+
+   //HANDLE UPDATE BUTTON TO SAVE DATA
+  var editButton = document.getElementById("update_"+id);
+  editButton.addEventListener("click",(evt) =>{
+     let id  = event.target.getAttribute("data-id")
+     handleUpdate(evt,id)    
+  })
 }
 
 
@@ -226,3 +432,6 @@ export const interpreteUserCategory = ($status) =>
             return 'Unassigned';
         }
     }
+
+
+
