@@ -14,6 +14,7 @@ function generatorId(){
 		for(let i = 0; i < length; i++) {
 			idGenerated += outcomes.charAt(Math.floor(Math.random() * outcomes.length));
 		}	
+		idGenerated = "BingHR-"+idGenerated;
 		return idGenerated;
 	}
 	const randomizedId = getRandomString(10);
@@ -373,7 +374,7 @@ function searchFilter(){
 						<div class="form-group col-sm-12">
 							
 							<input type="text" class="form-control" id="employeeId" placeholder="Employee ID *">
-							<div onclick="generatorId()" class="pull-right" style="cursor:pointer">Generate random id</div>
+							<div onclick="generatorId()" class="pull-right" style="cursor:pointer;color:#000">Generate random id</div>
 						</div>
 
 						<div class="form-group col-sm-6">
@@ -400,10 +401,10 @@ function searchFilter(){
 						<div class="form-group col-sm-4">
 								
 								<select class="form-control" id="role" data-style="btn-white" tabindex="-98">
-										<option value="1">SuperAdmin</option>
-										<option value="2">Admin</option>
-										<option value="3">Hr Admin</option>
-										<option value="4">Employee</option>
+										<option value="SUP">SuperAdmin</option>
+										<option value="ADM">Admin</option>
+										<option value="HRM">Hr Admin</option>
+										<option value="EMP">Employee</option>
 										
 									</select>
 						</div>
