@@ -12,10 +12,13 @@ class HttpRequest{
 		this.url = API_URL;
 	}
 	attachEvents(){
-		let that = this;
+	  let that = this;
+	  
 	  this.handleDisplay();
-	  // const reportForm = document.getElementById("newUser")
-   //    reportForm.addEventListener('submit', that.postRecord);
+	  const imageUpload = document.getElementById('image-upload');
+      const reportForm = document.getElementById("newUser")
+	  imageUpload.addEventListener('change', that.uploadImage);
+      reportForm.addEventListener('submit', that.postRecord);
 	 
 	}
 
@@ -89,6 +92,46 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 		    });
 	 });
     }
+
+   
+   uploadImage = (event) => {
+	const imageUpload = document.getElementById('image-upload');
+    const errMsg = document.querySelector('.image-msg');
+    let spinner = document.querySelector('.loader');
+		  
+	spinner.style.display = 'block';
+	  const displayImages = document.getElementById('displayImages');
+	  const file = event.target.files[0];
+	  const formData = new FormData();
+	  formData.append('file', file);
+	  formData.append('upload_preset', 'yftnq9xd');
+	  // eslint-disable-next-line no-undef
+	  fetch('https://api.cloudinary.com/v1_1/djdsxql5q/image/upload', {
+	      method: 'POST',
+	      body: formData
+	    })
+	    .then(response => response.json())
+	    .then((data) => {
+	      if (typeof data.secure_url !== 'undefined') {
+	        imageUrl = data.secure_url;
+	        displayImages.innerHTML += `<li class="image-list">
+	        <img src=${imageUrl} height="50" width="50" id="img"><span class="del-btn">&times;</span><i class="image-uploads" style="display:none">${imageUrl}</i>
+	</li>`;
+	        spinner.style.display = 'none';
+	        imageUpload.value = '';
+	        // handleUploads();
+	      } else {
+	        spinner.style.display = 'none';
+	        errMsg.style.display = 'block';
+	        errMsg.style.color = 'red';
+	        errMsg.innerHTML = 'Image failed to upload';
+	      }
+	    })
+	    .catch((error) => {
+	      throw error;
+	    });
+	}
+    
 
 
 
