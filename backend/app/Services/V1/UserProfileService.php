@@ -10,6 +10,7 @@ use Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use jeremykenedy\LaravelRoles\Models\Role;
 
 class UserProfileService extends BaseService
@@ -127,8 +128,48 @@ class UserProfileService extends BaseService
         }
     }
 
-    public function update(CreateUserRequest $request, $id){
+    public function update(UpdateUserRequest $request, $id){
+      $user = User::where('id', $id)->first();
+        if(!$user) {
+          return response()->json([
+              'success' => false,
+              'message' => 'User  does not exist.',
+          ], 404);
+        }
 
+         $input = $request->validated();
+
+
+       if(isset($input["password"])) {
+        $user->password = Hash::make($input['password']);
+       }
+
+     $user->firstname = ucwords($input['firstname']);
+      $user->lastname=  ucwords($input['lastname']);
+    $user->email = $input['email'];
+    
+    $user->mobilePhone = $input['mobilePhone'];
+    $user->employeeId = $input['employeeId'];
+    $user->category  =$input['roleType'];
+    $user->avatar = $input['avatar'];
+      try {
+
+    $user->save();
+             
+
+    $rolePlayingGames = interpreteUserCategory(ucwords($input['roleType']));
+                $role = Role::where('name', '=', $rolePlayingGames)->first();
+                $user->attachRole($role);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Profile  has been updated successfully',
+            ], 200);
+
+        } catch (Exception $e) {
+            return formatResponse(fetchErrorCode($e), get_class($e).': '.$e->getMessage());
+        }
+    }
     }
 
 

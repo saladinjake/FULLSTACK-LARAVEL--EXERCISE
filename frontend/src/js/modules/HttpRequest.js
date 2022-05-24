@@ -339,16 +339,16 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 
             <div class="clearfix"></div>
             <div class="form-group col-sm-4 pull-left">
-
+                <br/>
                 <input value="${eachRecord.username}" type="text" class="form-control" id="${eachRecord.id}username" placeholder="Username*">
             </div>
 
             <div class="form-group col-sm-4">
-                
+                 <span>Note:Leave blank to retain old password</span>
                 <input  type="password" class="form-control" id="${eachRecord.id}password" placeholder="Password*">
             </div>
             <div class="form-group col-sm-4">
-
+                   <span>Note:Leave blank to retain old password</span>
                 <input type="password" class="form-control" id="${eachRecord.id}confirmPassword" placeholder="Confirm Password*">
             </div>
 

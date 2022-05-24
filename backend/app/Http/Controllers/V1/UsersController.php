@@ -5,6 +5,7 @@ namespace App\Http\Controllers\V1;
 use App\Http\Controllers\Controller;
 use App\Services\V1\UserProfileService;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller

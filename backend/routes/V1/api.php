@@ -15,7 +15,7 @@ Route::prefix('v1')->group(function () {
   });
   Route::get('users', 'UsersController@index');
   Route::get('users/{id}/edit', 'UsersController@show');
-  Route::post('/users', 'UsersController@store');
-//   Route::put('/users/{id}/edit', 'UsersController@update');
+  Route::post('users', 'UsersController@store');
+  Route::put('users/{id}/edit', 'UsersController@update');
   Route::delete('users/{id}/delete','UsersController@destroy');
 });

@@ -233,24 +233,24 @@ const handleUpdate = function(event,id){
       return displayError('Please enter a username',msgDiv);
     }
 
-
-    if (!(password && password.trim().length)) {
-      return displayError('Please enter a password',msgDiv);
-    }
-
-
-    if (!(confirmPassword && confirmPassword.trim().length)) {
-      return displayError('Password comfirmation do not match',msgDiv);
-    }
+     // user can leave password as blank to retain old password
+    // if (!(password && password.trim().length)) {
+    //   return displayError('Please enter a password',msgDiv);
+    // }
 
 
-    if (!( confirmPassword== password)) {
-      return displayError('Password comfirmation do not match',msgDiv);
-    }
+    // if (!(confirmPassword && confirmPassword.trim().length)) {
+    //   return displayError('Password comfirmation do not match',msgDiv);
+    // }
+
+
+    // if (!( confirmPassword== password)) {
+    //   return displayError('Password comfirmation do not match',msgDiv);
+    // }
         
-        if (!(password.trim().length > 4 )) {
-      return displayError('Please enter a password greater than 4 in length',msgDiv);
-    }
+    //     if (!(password.trim().length > 4 )) {
+    //   return displayError('Please enter a password greater than 4 in length',msgDiv);
+    // }
 
 
     if (!(roleType && roleType.trim().length)) {
@@ -302,7 +302,7 @@ const handleUpdate = function(event,id){
       console.log(data)
       if (!errors) {
         loader.style.display = 'none';
-        window.location.reload()
+        // window.location.reload()
       }  else {
         Object.keys(errors).forEach(keys =>{
           displayError(errors[keys][0],msgDiv);
