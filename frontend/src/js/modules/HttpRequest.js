@@ -264,14 +264,15 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 	    })
 	    .then(response => response.json())
 	    .then((data) => {
+	    	let errors = data?.errors;
 	    	console.log(data)
-	      if (data) {
+	      if (!errors) {
 	        loader.style.display = 'none';
+	        window.location.reload()
 	      }  else {
-	        msgDiv.style.display = 'block';
-	        msgDiv.style.color = 'red';
-	        loader.style.display = 'none';
-	        msgDiv.innerHTML = data.error;
+	        Object.keys(errors).forEach(keys =>{
+	        	displayError(errors[keys][0],msgDiv);
+	        })
 	      }
 	    })
 	    .catch((error) => {

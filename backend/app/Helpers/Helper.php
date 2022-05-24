@@ -2,16 +2,29 @@
 
     function interpreteUserCategory($status)
     {
+        
         if ($status == 'SUP') {
             return 'SuperAdmin';
         } elseif ($status == 'ADM') {
             return 'Admin';
         } elseif ($status == 'EMP') {
             return 'Employee';
-        } elseif ($status == 'HR') {
-            return 'HR';
-        } else {
-            return 'Employee';
+        } elseif ($status == 'HRM') {
+            return 'HrAdmin';
+        } elseif ($status == 'HOD') {
+            return 'Hod';
+        
+        } elseif ($status == 'TML') {
+            return 'TeamLead';
+        
+        }elseif ($status == 'TMM') {
+            return 'TeamMember';
+        
+        }elseif ($status == 'DEV') {
+            return 'Developer';
+        
+        }else {
+            return 'Unassigned';
         }
     }
 

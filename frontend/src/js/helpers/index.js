@@ -184,27 +184,27 @@ export const getAllCheckedValuesOf = (name) => {
 
 export const interpreteUserCategory = ($status) =>
     {
-        if ($status == 'SUP') {
+       if ($status == 'SUP') {
             return 'SuperAdmin';
         } else if ($status == 'ADM') {
             return 'Admin';
         } else if ($status == 'EMP') {
             return 'Employee';
         } else if ($status == 'HRM') {
-            return 'HUMAN RESOURCE MANAGER';
+            return 'HrAdmin';
         } else if ($status == 'HOD') {
-            return 'Head of Department';
+            return 'Hod';
         
         } else if ($status == 'TML') {
-            return 'Team Leader';
+            return 'TeamLead';
         
         }else if ($status == 'TMM') {
-            return 'TEAM MEMBER';
+            return 'TeamMember';
         
-        }else if ($status == 'SWE') {
-            return 'SENIOR SOFTWARE ENGINEER';
+        }else if ($status == 'DEV') {
+            return 'Developer';
         
         }else {
-            return 'Employee';
+            return 'Unassigned';
         }
     }

@@ -81,21 +81,33 @@ class UserProfileService extends BaseService
         try {
             $input = $request->validated();
 
-            DB::transaction(function () use ($input, &$user) {
-                $user = User::create([
-                    'firstname' => ucwords($input['firstname']),
-                    'lastname' => ucwords($input['lastname']),
-                    'mobilePhone' => $input['mobilePhone'],
-                    'email' => $input['email'],
-                    'password' => bcrypt($input['password'])
-                ]);
+           
 
-                $role = Role::where('name', '=', ucwords($input['role']))->first();
+         DB::transaction(function () use ($input, &$user) {
+           $user = User::create([
+                    
+             'password' => bcrypt($input['password']),
+
+             'firstname' =>ucwords($input['firstname']),
+             'lastname'=> ucwords($input['lastname']),
+             'email'=> $input['email'],
+        
+             'mobilePhone'=> $input['mobilePhone'],
+             'employeeId'=> $input['employeeId'],
+             'category' =>$input['roleType'],
+             'avatar'=> $input['avatar'],
+        // // 'superAdminPreviledges' => $input['mobilePhone'],
+        // // 'adminPreviledges' => $input['mobilePhone'],
+        // // 'employeesPreviledges' => $input['mobilePhone'],
+        // // 'hrPreviledges' => $input['mobilePhone'],
+        ]);
+               $rolePlayingGames = interpreteUserCategory(ucwords($input['roleType']));
+                $role = Role::where('name', '=', $rolePlayingGames)->first();
                 $user->attachRole($role);
                 
 
                 
-            });
+        });
 
             $user_roles = $user->roles;
 
@@ -104,7 +116,9 @@ class UserProfileService extends BaseService
             $success['email'] = $user->email;
             $success['mobilePhone'] = $user->mobilePhone;
             $success['roles'] = $user_roles->makeHidden(['id','description','pivot','level','slug','created_at','updated_at','deleted_at']);
-            $success['token'] = $user->createToken('Personal Access Token')->accessToken;
+           
+          // removed access token since this is a free api access
+            // $success['token'] = $user->createToken('Personal Access Token')->accessToken;
 
             return formatResponse(201, 'Learner Account Created Successfully.', true, $success);
 

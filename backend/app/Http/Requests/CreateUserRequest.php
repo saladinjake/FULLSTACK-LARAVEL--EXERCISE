@@ -30,10 +30,11 @@ class CreateUserRequest extends FormRequest
             'firstname' => 'required|max:150|string',
             'lastname' => 'required|max:150|string',
             'email' => 'required|email|max:150|string|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:6',
             'mobilePhone' => 'required|max:20|unique:users',
             'employeeId' => 'required|max:150|string',
             'avatar' => 'required|max:250|string',
+            'roleType' => 'required|max:3'
             // 'account_type' => ['required', Rule::in($type)],
         ];
     }
