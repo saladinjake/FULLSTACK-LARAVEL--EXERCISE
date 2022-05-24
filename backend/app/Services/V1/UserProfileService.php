@@ -19,9 +19,9 @@ class UserProfileService extends BaseService
     {
         try {
             $profiles = User::all();
-            $counter = $profile->count();
+            $counter = $profiles->count();
             if ($counter < 1) {
-                return formatResponse(200, 'No users record', true, $profile);
+                return formatResponse(200, 'No users record', true, $profiles);
             } else {
                 
                 return formatResponse(200, 'Users profile(s) retrieved successfully', true, $profiles);

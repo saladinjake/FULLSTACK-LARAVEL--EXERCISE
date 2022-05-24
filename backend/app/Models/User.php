@@ -36,7 +36,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $with = ['instructorProfile'];
+    protected $with = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -83,62 +83,5 @@ class User extends Authenticatable
         return ucfirst($lastName);
     }
 
-    public function businessProfile()
-    {
-        return $this->hasOne(BusinessProfile::class);
-    }
-
-    public function businesses()
-    {
-        return $this->belongsToMany('App\Models\BusinessProfile', 'business_members', 'member_id', 'business_id')->withPivot('staff_no', 'job_designation', 'status')->withTimestamps();
-    }
-
-    public function certificates()
-    {
-        return $this->belongsToMany('App\Models\Certificate', 'user_certificates', 'user_id', 'certificate_id');
-    }
-
-    public function learnerProfile()
-    {
-        return $this->hasOne(LearnerProfile::class);
-    }
-    public function courses()
-    {
-        return $this->hasMany(Course::class, 'instructor_id');
-    }
-
-    public function course_instructors()
-    {
-        return $this->belongsToMany('App\Models\Course', 'course_instructors', 'instructor_id', 'course_id');
-    }
-
-    public function instructorProfile()
-    {
-        return $this->hasOne(InstructorProfile::class);
-    }
-
-    public function courseTeams()
-    {
-        return $this->hasMany(CourseTeam::class, 'member_id');
-    }
-
-    public function enrollments()
-    {
-        return $this->hasMany(Enrollment::class);
-    }
-
-    public function sendEmailVerificationNotification()
-    {
-        $this->notify(new VerifyEmailNotification);
-    }
-
-    public function wishes()
-    {
-        return $this->hasMany(WishList::class);
-    }
-
-    public function scopeWithAndWhereHas($query, $relation, $constraint){
-        return $query->whereHas($relation, $constraint)
-                     ->with([$relation => $constraint]);
-    }
+    
 }
