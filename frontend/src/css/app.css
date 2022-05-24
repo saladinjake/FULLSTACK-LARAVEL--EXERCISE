@@ -3,7 +3,7 @@
 
 /*vendors import*/
 @import "vendors/_bootstrap.min.css";
-@import "vendors/_notification.css";
+
 
 /*base imports*/
 @import "base/globals.css";
@@ -13,3 +13,6 @@
 @import "layouts/_workspace.css";
 @import "layouts/_tables.css";
 @import "layouts/_modals.css";
+
+/*mixins*/
+@import "mixins/_notification.css";

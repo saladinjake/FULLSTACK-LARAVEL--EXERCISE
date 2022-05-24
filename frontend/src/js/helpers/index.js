@@ -57,7 +57,8 @@ export const formRefill = (jsonData) => {
 /*custom toast notification */
 
 const showToastError = (msg,title="Error Notification") =>{
-  
+  let toast = new ToastNotification();
+  toast = toast.getToast();
   toast.create({
      title: title,
      text: msg,
@@ -65,51 +66,30 @@ const showToastError = (msg,title="Error Notification") =>{
   });
 }
 
-(function(root, factory) {
-  try {
-    // commonjs
-    if (typeof exports === 'object') {
-      module.exports = factory();
-    // global
-    } else {
-      root.toast = factory();
-    }
-  } catch(error) {
-    console.log('Isomorphic compatibility is not supported at this time for toast.')
-  }
-})(this, function() {
 
-  // We need DOM to be ready
-  if (document.readyState === 'complete') {
-    init();
-  } else {
-    window.addEventListener('DOMContentLoaded', init);
+class ToastNotification{
+  constructor(){
+    this.toast = {create:() =>{}, hide:()=>{}};
+    this.autoincrement = 0;
+    this.init();
+    
   }
 
-  // Create toast object
-  toast = {
-    // In case toast creation is attempted before dom has finished loading!
-    create: function() {
-      console.error([
-        'DOM has not finished loading.',
-        '\tInvoke create method when DOM\s readyState is complete'
-      ].join('\n'))
-    }
-  };
-  var autoincrement = 0;
-
-  // Initialize library
-  function init() {
+  getToast(){
+    return this.toast
+  }
+  init() {
     // Toast container
     var container = document.createElement('div');
     container.id = 'toast-container';
     document.body.appendChild(container);
+    let that = this;
 
     // @Override
     // Replace create method when DOM has finished loading
-    toast.create = function(options) {
+    this.toast.create = function(options) {
       var toast = document.createElement('div');
-      toast.id = ++autoincrement;
+      toast.id = ++that.autoincrement;
       toast.id = 'toast-' + toast.id;
       toast.className = 'toast-toast';
 
@@ -143,7 +123,7 @@ const showToastError = (msg,title="Error Notification") =>{
       }
 
       // toast api
-      toast.hide = function() {
+      that.toast.hide = function() {
         toast.className += ' toast-fadeOut';
         toast.addEventListener('animationend', removeToast, false);
       };
@@ -170,10 +150,7 @@ const showToastError = (msg,title="Error Notification") =>{
 
     }
   }
-
-  return toast;
-
-});
+}
 
 
 export const displayError = (message,msgDiv) => {
