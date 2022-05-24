@@ -25,6 +25,11 @@
 frontend: npm run start:dev
 backend: php artisan serve
 
+## extra functionality
+ - image upload to cloudinary server
+ - search filter for user
+ - profile avatar update via ajax
+
 
 ## TASK ASSIGNMENT REVIEW 
 
