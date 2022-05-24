@@ -302,7 +302,7 @@ const handleUpdate = function(event,id){
       console.log(data)
       if (!errors) {
         loader.style.display = 'none';
-        // window.location.reload()
+        window.location.reload()
       }  else {
         Object.keys(errors).forEach(keys =>{
           displayError(errors[keys][0],msgDiv);
