@@ -325,12 +325,6 @@ a:focus {
 }
 
 
-
-
-
-
-
-
 .loader {
    position:fixed;
     z-index:99;/* make higher than whatever is on the page */
