@@ -24,7 +24,11 @@ class HttpRequest{
 	}
 
     handleDisplay(){ 
+      let that = this;
       this.url = API_URL+"/users";
+      let templateModal = ``;
+      const modalsEditor = document.getElementById('modals-holder');
+  	
       window.addEventListener('load', (event) => {
 		  event.preventDefault();
 		  let loader = document.querySelector('.loader');
@@ -76,10 +80,12 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
       <a href="#" class="table-action-btn"><i data-role="delete" data-id="${item?.id}" id="delete_${item.id}" onclick="getId(this,event)" class="fa fa-trash"></i></a>
     </td>
   </tr>`
-
+    
 		      res+= eachRecord;
+		      templateModal +=that.appendModalInView(item);
 		    });
 		    recordItems.innerHTML += res
+		    modalsEditor.innerHTML = templateModal
 		  };
 
 		  fetch(this.url, {
@@ -280,6 +286,210 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 	    });
 
 
+  }
+
+
+  appendModalInView(eachRecord){
+  	 let template = `<div id="editme_${eachRecord.id}" class="modal-cs col-md-10">
+    <div class="modal-content col-md-8">
+        <span class="close-button" id="${"closeme_"+eachRecord.id}">&times;</span>
+        <span id="msg-error"></span>
+        <h4>Add User</h4>
+        <form role="form" id="newUser">
+
+            <div class="form-group col-sm-12">
+
+                <input value="${eachRecord.employeeId}" type="text" class="form-control" id="employeeId" placeholder="Employee ID *">
+                
+            </div>
+
+            <div class="form-group col-sm-6">
+
+                <input value="${eachRecord.firstname}"  type="text" class="form-control" id="firstname" placeholder="Firstname*">
+            </div>
+
+            <div class="form-group col-sm-6">
+
+                <input value="${eachRecord.lastname}" type="text" class="form-control" id="lastname" placeholder="Lastname *">
+            </div>
+
+
+            <div class="form-group col-sm-4">
+
+                <input value="${eachRecord.email}" type="text" class="form-control" id="email" placeholder="Email ID *">
+            </div>
+
+            <div class="form-group col-sm-4">
+
+                <input value="${eachRecord.mobilePhone}" type="text" class="form-control" id="mobilePhone" placeholder="Mobile Number *">
+            </div>
+
+            <div class="form-group col-sm-4">
+
+                <select class="form-control" id="role" data-style="btn-white" tabindex="-98">
+										<option value="SUP">SuperAdmin</option>
+										<option value="ADM">Admin</option>
+										<option value="HRM">Hr Admin</option>
+										<option value="EMP">Employee</option>
+										
+									</select>
+            </div>
+
+
+
+            <div class="clearfix"></div>
+            <div class="form-group col-sm-4 pull-left">
+
+                <input value="${eachRecord.username}" type="text" class="form-control" id="username" placeholder="Username*">
+            </div>
+
+            <div class="form-group col-sm-4">
+                
+                <input  type="password" class="form-control" id="password" placeholder="Password*">
+            </div>
+            <div class="form-group col-sm-4">
+
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password*">
+            </div>
+
+            <div class="form-group image-msg col-sm-12">
+                <label for="file">File Type: Image</label>
+
+                <input type="file" accept="image/*" class="form-control" id="image-upload">
+                <ul id="displayImages"></ul>
+                <img src="${eachRecord.avatar}"  style="width:40px;height:20px" />
+            </div>
+
+
+            <div class="clearfix"></div>
+
+
+
+
+            <div class="table-responsive">
+                <table class="table table-hover  m-0 table table-actions-bar">
+                    <thead class="leafy">
+
+                        <th>Module Permission</th>
+                        <th>Read</th>
+                        <th>Write</th>
+
+                        <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><a href="" class=""><b>Super Admin</b></a></td>
+                            <td>
+
+                                <input name="super_admins" type="checkbox" placeholder="Employee ID *">
+
+                            </td>
+                            <td>
+
+
+                                <input name="super_admins" type="checkbox" placeholder="Employee ID *">
+
+                            </td>
+
+
+                            <td>
+
+
+                                <input name="super_admins" type="checkbox" placeholder="Employee ID *">
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td><a href="" class=""><b>Admin</b></a></td>
+                            <td>
+
+                                <input name="admins" type="checkbox" placeholder="Employee ID *">
+
+                            </td>
+                            <td>
+
+
+                                <input name="admins" type="checkbox" placeholder="Employee ID *">
+
+                            </td>
+
+
+                            <td>
+
+
+                                <input name="admins" type="checkbox" placeholder="Employee ID *">
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td><a href="" class=""><b>Employee</b></a></td>
+                            <td>
+
+                                <input name="employees" type="checkbox" placeholder="Employee ID *">
+
+                            </td>
+                            <td>
+
+
+                                <input name="employees" type="checkbox" placeholder="Employee ID *">
+
+                            </td>
+
+
+                            <td>
+
+
+                                <input name="employees" type="checkbox" placeholder="Employee ID *">
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td><a href="" class=""><b>Hr Admin</b></a></td>
+                            <td>
+
+                                <input type="checkbox" name="hr_admins" placeholder="Employee ID *">
+
+                            </td>
+                            <td>
+
+
+                                <input type="checkbox" name="hr_admins" placeholder="Employee ID *">
+
+                            </td>
+
+
+                            <td>
+
+
+                                <input type="checkbox" name="hr_admins" placeholder="Employee ID *">
+
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <div class="pull-right">
+                <button type="submit" id="newUserBtn" class="btn btn-default waves-effect waves-light m-l-10">Save</button>
+                <button type="button" class="btn btn-white waves-effect waves-light m-l-10" id="${"revert_"+eachRecord.id}">Cancel</button>
+            </div>
+
+        </form>
+    </div>
+</div>`
+return template;
   }
 	
 }

@@ -1,7 +1,7 @@
 import { API_URL } from "../config/Config"
 export const deleteUser =(id) =>{
    let recordUrl = API_URL + "/users/"+ id+"/delete";
-   alert(recordUrl)
+  
    let loader = document.querySelector('.loader');
    loader.style.display = 'block';
    fetch(recordUrl, {
@@ -22,35 +22,53 @@ export const deleteUser =(id) =>{
       //}
     }).catch(err=> console.log(err));
 }
+export const viewEditMode = (id) =>{
+  alert("called"+ id)
+  //if(document.getElementById(id)){
+    const modal = document.getElementById("editme_"+id);
+    modal.classList.toggle("show-modal");
+    var closeButton = document.getElementById("closeme_"+id);
+    closeButton.addEventListener("click", ()=>{
+       modal.classList.remove("show-modal");
+    });
+// window.addEventListener("click", windowOnClick);
+var closeButton2 = document.getElementById("revert_"+id);
+
+   closeButton2.addEventListener("click", ()=>{
+       modal.classList.remove("show-modal");
+    });
+  //}
+}
+
+
 export const getId = (user,event) => {
       event.preventDefault()
       localStorage.setItem('Id', user.getAttribute("id"));
       localStorage.setItem('actionType', user.getAttribute("mode"));
      let id = user.getAttribute("data-id");
-     alert(user.getAttribute("data-role"))
+     
      if(user.getAttribute("data-role")=="delete"){
      	
         deleteUser(id);
      }else{
-     	//file the display form
-      //let url =  API_URL+ `/users/${id}/edit`
-      //formRefill(prefetchRecord().data);
+     	//show edit
+        viewEditMode(id)
      }
 }
 
 
-export const  prefetchRecord = async (url) =>{
-  const res = await fetch(url);
-  return res;
-} 
-export const formRefill = (jsonData) => {
-  const { elements } = document.querySelector('form')
+// export const  prefetchRecord = async (url) =>{
+//   const res = await fetch(url);
+//   return res;
+// } 
+// export const formRefill = (jsonData) => {
+//   const { elements } = document.querySelector('form')
 
-  for (const [ key, value ] of Object.entries(jsonData) ) {
-    const field = elements.namedItem(key)
-    field && (field.value = value)
-  }
-}
+//   for (const [ key, value ] of Object.entries(jsonData) ) {
+//     const field = elements.namedItem(key)
+//     field && (field.value = value)
+//   }
+// }
 
 
 
