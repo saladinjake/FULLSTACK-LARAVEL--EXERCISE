@@ -1,7 +1,11 @@
 import { API_URL } from "../config/Config"
-
-
-
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@description delete user api
+*@params: int id
+*@returns void 
+*/
 export const deleteUser =(id) =>{
    let recordUrl = API_URL + "/users/"+ id+"/delete";
   
@@ -26,6 +30,15 @@ export const deleteUser =(id) =>{
     }).catch(err=> console.log(err));
 }
 
+
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@description performs a delete or edit request based on user interaction
+*@params: HTMLObject user
+*@params: HTMLEEvent event
+*@returns Function
+*/
 export const getId = (user,event) => {
       event.preventDefault()
       localStorage.setItem('Id', user.getAttribute("id"));
@@ -34,30 +47,25 @@ export const getId = (user,event) => {
      
      if(user.getAttribute("data-role")=="delete"){
      	
-        deleteUser(id);
+       return deleteUser(id);
      }else{
      	//show edit
-        viewEditMode(id)
+      return  viewEditMode(id)
      }
 }
 
 
-// export const  prefetchRecord = async (url) =>{
-//   const res = await fetch(url);
-//   return res;
-// } 
-// export const formRefill = (jsonData) => {
-//   const { elements } = document.querySelector('form')
-
-//   for (const [ key, value ] of Object.entries(jsonData) ) {
-//     const field = elements.namedItem(key)
-//     field && (field.value = value)
-//   }
-// }
-
 
 
 /*custom toast notification */
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@description toast error notifier
+*@params: String msg
+*@params: String title
+*@returns void
+*/
 
 const showToastError = (msg,title="Error Notification") =>{
   let toast = new ToastNotification();
@@ -69,6 +77,15 @@ const showToastError = (msg,title="Error Notification") =>{
   });
 }
 
+
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@description toast class
+*@method: getToast
+*@method: init
+*@returns void
+*/
 
 class ToastNotification{
   constructor(){
@@ -156,6 +173,16 @@ class ToastNotification{
 }
 
 
+
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@description helper function to display form error
+*@params: String msg
+*@params: HTMLoBJECT div
+*@returns void
+*/
+
 export const displayError = (message,msgDiv) => {
   const para = document.createElement('p');
   para.textContent = message;
@@ -186,9 +213,18 @@ export const displayError = (message,msgDiv) => {
 
 
 
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@description handles update request
+*@params: HTMLOBJECT event
+*@params: int id
+*@returns void
+*/
+
 
 const handleUpdate = function(event,id){
-  alert(id)
+  
     
       event.preventDefault();
       //const reportForm = document.getElementById(`${id}`+'reportForm');
@@ -316,18 +352,39 @@ const handleUpdate = function(event,id){
 }
 
 
+
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@description checkbox helper function gets all checked values of a checkbox named attrbute
+*@method: getToast
+*@method: init
+*@returns void
+*/
+
+
 export const getAllCheckedValuesOf = (name) => {
   let checkeds = document.querySelectorAll('input[name="' + name + '"]:checked'),
   values = [];
     
   checkeds.forEach(function(chkd) {
-    // let keyValue ={}
-    // keyValue[chkd.getAttribute("key")] =chkd.value
-    values.push(chkd.value);
+    let keyValue ={}
+    keyValue[chkd.getAttribute("data-role")] =chkd.value
+    values.push(keyValue);
   });
   return values;
 }
 
+
+
+
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@description updates user profile
+*@param: HTMLObject events
+*@returns void
+*/
 
 
 
@@ -371,6 +428,15 @@ const changeImage = (event) => {
    
 
 
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@description modal view event handler for update reques
+*@params: int id
+*@returns void
+*/
+
+
 
 export const viewEditMode = (id) =>{
   
@@ -405,6 +471,14 @@ export const viewEditMode = (id) =>{
 
 
 
+
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@description role acronym interpreter
+*@params: string status
+*@returns string
+*/
 
 export const interpreteUserCategory = ($status) =>
     {
