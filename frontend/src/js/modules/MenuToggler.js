@@ -6,6 +6,7 @@ class MenuToggler{
 	constructor(){
 	   this.$body = getDom('body');
       this.$openLeftBtn = getDom('.open-left');
+      this.$openLeftBtn2 = getDom('.open-left2');
       this.$menuItem = getDom('.entity2');
 	}
 
@@ -38,6 +39,11 @@ class MenuToggler{
     let $this = this;
       //bind on click
     this.$openLeftBtn.addEventListener(event, function(e) {
+      e.stopPropagation();
+      $this.openLeftBar();
+    });
+
+    this.$openLeftBtn2.addEventListener(event, function(e) {
       e.stopPropagation();
       $this.openLeftBar();
     });
