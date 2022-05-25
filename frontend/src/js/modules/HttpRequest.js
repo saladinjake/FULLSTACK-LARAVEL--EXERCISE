@@ -45,13 +45,13 @@ class HttpRequest{
                      break
 
                   case "Employee":
-                     badge +="label-primary"
+                     badge +="bg-ash"
                      break
                   case "Admin":
                      badge +="label-success"
                      break;
                   default:
-                     badge +="label-info" 
+                     badge +="label-primary" 
 
 		    	}
 		    let dateFormat = new Date(item?.created_at);
@@ -483,7 +483,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 
 
             <div class="pull-right">
-                <button type="submit" data-id="${eachRecord.id}" id="update_${eachRecord.id}" class="btn btn-default waves-effect waves-light m-l-10">Save</button>
+                <button type="submit" data-id="${eachRecord.id}" id="update_${eachRecord.id}" class="btn btn-primary waves-effect waves-light m-l-10">Update User</button>
                 <button type="button" class="btn btn-white waves-effect waves-light m-l-10" id="${"revert_"+eachRecord.id}">Cancel</button>
             </div>
 
