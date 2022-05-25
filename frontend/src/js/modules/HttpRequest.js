@@ -7,6 +7,21 @@ import {
 	interpreteUserCategory
 } from "../helpers/index"
 window.getId = getId;
+
+
+/*
+*company: Binghr.io 
+
+*@author : saladin jake
+*@class HttpRequest
+*@description http reques for get and post record
+*@method: handleDisplay
+*@method: attachEvents
+*@method: uploadImage
+*@method : handleCreate
+*@returns void
+*/
+
 class HttpRequest{
 	constructor(){
 		this.url = API_URL;

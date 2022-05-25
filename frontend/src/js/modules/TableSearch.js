@@ -1,3 +1,13 @@
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@class: TableSearch
+*@description search table rows
+*@method: inputHandler, filter
+*@method: attachEvents
+
+*/
+
 class TableSearch{
 	constructor(){
 		this.input = null;

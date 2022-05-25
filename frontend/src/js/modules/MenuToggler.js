@@ -1,7 +1,26 @@
+
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@description get element by selector
+*@params: string selector
+*@returns HTMLELEMENT
+*/
 const getDom = (expr) =>{
 	return document.querySelector(expr);
 }
 
+
+
+/*
+*company: Binghr.io 
+*@author : saladin jake
+*@class: MenuToggler
+*@description slide and push menu
+*@method: openLeftBar
+*@method: attachEvents
+
+*/
 class MenuToggler{
 	constructor(){
 	   this.$body = getDom('body');
