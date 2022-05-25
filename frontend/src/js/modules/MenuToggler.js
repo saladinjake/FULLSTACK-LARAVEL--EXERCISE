@@ -6,7 +6,7 @@ class MenuToggler{
 	constructor(){
 	   this.$body = getDom('body');
       this.$openLeftBtn = getDom('.open-left');
-      this.$menuItem = getDom('entity2');
+      this.$menuItem = getDom('.entity2');
 	}
 
    openLeftBar = () =>{
