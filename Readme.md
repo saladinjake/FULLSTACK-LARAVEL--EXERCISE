@@ -12,6 +12,8 @@
 -  composer install --ignore-platform-reqs
 
 ##Step 2 Note to completely install backend
+- note for my database port i am using port 3301
+- edit the env file to suit your database configuration
 - you need to run migration tables and default seeder
 -to migrate run : php artisan migrate 
   if migration fails rerun the migration command
