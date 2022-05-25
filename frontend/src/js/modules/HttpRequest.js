@@ -186,6 +186,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 	      let employeesPreviledges = getAllCheckedValuesOf("employees");
 	      let hrPreviledges = getAllCheckedValuesOf("hr_admins");
           
+          console.log(superAdminPreviledges)
           if (!(employeeId && employeeId.trim().length)) {
 		    return displayError('Please enter an employee id',msgDiv);
 		  }
