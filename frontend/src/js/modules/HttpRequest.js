@@ -66,7 +66,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
     <div class="icon4">
           <img src="${item?.avatar}"  class="img-circle avatar">
           <b>${item?.firstname} ${item?.lastname}</b>
-    <p> ${item?.email}</p>
+    <p style="margin-left:24px;color:#ccc;font-size:10px"> ${item?.email}</p>
      </div>
     
     </a> 

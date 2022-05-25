@@ -16,7 +16,7 @@
 .drop-button:after {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 48%;
   right: -15px;
   transform: translateY(-50%);
   width: 0; 
