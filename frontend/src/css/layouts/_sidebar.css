@@ -32,7 +32,7 @@
   color:#fff;
 }
 
-.active-section{
+.active-sectionnav{
   border-right:2px solid #1E90FF;
 }
 .icons-only-bottom{
@@ -117,7 +117,6 @@ body.fixed-left .side-menu.left {
 #sidebar-menu ul ul a {
   color: #222;
   display: block;
- /* padding: 10px 20px 10px 65px;*/
 }
 #sidebar-menu ul ul a:hover {
     color: blue;
@@ -140,7 +139,7 @@ body.fixed-left .side-menu.left {
 #sidebar-menu > ul > li > a {
   color: #222;
   display: block;
-  padding: 2px;
+  padding: 5px;
   margin: 4px 0px;
   border-left: 3px solid #ffffff;
 }
