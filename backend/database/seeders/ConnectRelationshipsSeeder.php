@@ -19,16 +19,16 @@ class ConnectRelationshipsSeeder extends Seeder
         $permissions = config('roles.models.permission')::all();
 
         /**
-         * Attach Permissions to Roles.
+         * Attach all Permissions rights to Roles.
          */
         $roleSuperAdmin = config('roles.models.role')::where('name', '=', 'SuperAdmin')->first();
         foreach ($permissions as $permission) {
             $roleSuperAdmin->attachPermission($permission);
         }
 
-        //HOD Attachments
-        $hodPerm = config('roles.models.permission')::where('name', '=', 'Can Manage Department')->first();
-        $roleHod = config('roles.models.role')::where('name', '=', 'Hod')->first();
+        //HOD HR ADMIN Attachments
+        $hodPerm = config('roles.models.permission')::where('name', '=', 'Can Manage HR Department')->first();
+        $roleHod = config('roles.models.role')::where('name', '=', 'HrAdmin')->first();
         $roleHod->attachPermission($hodPerm);
 
         //Admin Attachments
@@ -37,7 +37,7 @@ class ConnectRelationshipsSeeder extends Seeder
         $roleAdmin->attachPermission($adminPerm);
 
         //User Attachments
-        $userPerm = config('roles.models.permission')::where('name', '=', 'Can View History')->first();
+        $userPerm = config('roles.models.permission')::where('name', '=', 'Can View MyRecord')->first();
         $roleUser = config('roles.models.role')::where('name', '=', 'Employee')->first();
         $roleUser->attachPermission($userPerm);
 
