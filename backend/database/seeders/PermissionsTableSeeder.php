@@ -18,6 +18,7 @@ class PermissionsTableSeeder extends Seeder
          *
          */
         $Permissionitems = [
+           //employee or user
             [
                 'name'        => 'Can View Users',
                 'slug'        => 'view.users',
@@ -48,48 +49,121 @@ class PermissionsTableSeeder extends Seeder
                 'description' => 'Allows for the creation, enabling and disabling of users in the client company',
                 'model'       => 'Permission',
             ],
+
+            
+
+
+
+
+      //hr's
+
+
             [
-                'name'        => 'Can Manage Department',
-                'slug'        => 'can.manage.department',
-                'description' => 'Allows for the creation, enabling and disabling of users in the department',
+                'name'        => 'Can View HR Department',
+                'slug'        => 'view.hr',
+                'description' => 'Can view hr',
                 'model'       => 'Permission',
             ],
             [
-                'name'        => 'Can Manage Partners',
-                'slug'        => 'can.manage.partners',
-                'description' => 'Allows for the creation, enabling and disabling of partners',
+                'name'        => 'Can Create HR Department',
+                'slug'        => 'create.hr',
+                'description' => 'Can create new hr',
                 'model'       => 'Permission',
             ],
             [
-                'name'        => 'Can Manage Businesses',
-                'slug'        => 'can.manage.business',
-                'description' => 'Allows for the creation, enabling and disabling of businesses',
+                'name'        => 'Can Edit HR Department',
+                'slug'        => 'edit.hr',
+                'description' => 'Can edit hr',
                 'model'       => 'Permission',
             ],
             [
-                'name'        => 'Can Manage Hr',
+                'name'        => 'Can Delete HR Department',
+                'slug'        => 'delete.hr',
+                'description' => 'Can delete hr',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can Manage HR Department',
                 'slug'        => 'can.manage.hr',
-                'description' => 'Allows for the creation, enabling and disabling of admin hr',
+                'description' => 'Allows for the creation, enabling and disabling of hr in the client company',
+                'model'       => 'Permission',
+            ],
+
+
+
+            //admin
+            [
+                'name'        => 'Can View Admin',
+                'slug'        => 'view.admin',
+                'description' => 'Can view admin',
                 'model'       => 'Permission',
             ],
             [
-                'name'        => 'Can View History',
-                'slug'        => 'can.view.history',
-                'description' => 'Allows access to a record payment history',
+                'name'        => 'Can Create Admin',
+                'slug'        => 'create.admin',
+                'description' => 'Can create new admin',
                 'model'       => 'Permission',
             ],
             [
-                'name'        => 'Can Manage History',
-                'slug'        => 'can.manage.history',
-                'description' => 'Allows for the creation, enabling and disabling of history',
+                'name'        => 'Can Edit Admin',
+                'slug'        => 'edit.admin',
+                'description' => 'Can edit admin',
                 'model'       => 'Permission',
             ],
             [
-                'name'        => 'Can Manage Programs',
-                'slug'        => 'can.manage.program',
-                'description' => 'Allows for the creation, enabling and disabling of programs',
+                'name'        => 'Can Delete Admin',
+                'slug'        => 'delete.admin',
+                'description' => 'Can delete admin',
                 'model'       => 'Permission',
             ],
+            [
+                'name'        => 'Can Manage Admin',
+                'slug'        => 'can.manage.admin',
+                'description' => 'Allows for the creation, enabling and disabling of admin in the client company',
+                'model'       => 'Permission',
+            ],
+
+
+
+
+
+
+
+            //admin
+            [
+                'name'        => 'Can View SuperAdmin',
+                'slug'        => 'view.superadmin',
+                'description' => 'Can view super admin',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can Create SuperAdmin',
+                'slug'        => 'create.superadmin',
+                'description' => 'Can create new superadmin',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can Edit SuperAdmin',
+                'slug'        => 'edit.superadmin',
+                'description' => 'Can edit superadmin',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can Delete SuperAdmin',
+                'slug'        => 'delete.superadmin',
+                'description' => 'Can delete superadmin',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can Manage SuperAdmin',
+                'slug'        => 'can.manage.superadmin',
+                'description' => 'Allows for the creation, enabling and disabling of superadmin in the client company',
+                'model'       => 'Permission',
+            ],
+
+
+
+
         ];
         /*
          * Add Permission Items
