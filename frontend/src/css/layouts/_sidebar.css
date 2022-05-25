@@ -137,7 +137,7 @@ body.fixed-left .side-menu.left {
   color: #7e57c2 !important;
 }
 #sidebar-menu > ul > li > a {
-  color: #222;
+  color: #ccc;
   display: block;
   padding: 5px;
   margin: 4px 0px;
