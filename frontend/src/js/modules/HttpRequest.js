@@ -394,18 +394,19 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
                         <th>Delete</th>
                         </tr>
                     </thead>
+
 <tbody>
 	<tr>
 		<td><a href="" class=""><b>Super Admin</b></a></td>
 		<td>
 							
-							<input data-role="read"  name="${eachRecord.id}super_admins" type="checkbox"   placeholder="Employee ID *">
+							<input data-role="Can View SuperAdmin"  name="${eachRecord.id}super_admins" type="checkbox"   placeholder="Employee ID *">
 						
 		</td>
 		<td>
 			
 							
-							<input data-role="write" name="${eachRecord.id}super_admins" type="checkbox"   placeholder="Employee ID *">
+							<input data-role="Can Edit SuperAdmin" name="${eachRecord.id}super_admins" type="checkbox"   placeholder="Employee ID *">
 						
 					</td>
 		
@@ -413,7 +414,7 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 		<td>
 			
 							
-							<input data-role="delete" name="${eachRecord.id}super_admins" type="checkbox" placeholder="Employee ID *">
+							<input data-role="Can Delete SuperAdmin" name="${eachRecord.id}super_admins" type="checkbox" placeholder="Employee ID *">
 						
 		</td>
 	</tr>
@@ -423,13 +424,13 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 		<td><a href="" class=""><b>Admin</b></a></td>
 		<td>
 							
-							<input data-role="read" name="${eachRecord.id}admins" type="checkbox"   placeholder="Employee ID *">
+							<input data-role="Can View Admin" name="${eachRecord.id}admins" type="checkbox"   placeholder="Employee ID *">
 						
 		</td>
 		<td>
 			
 							
-							<input data-role="write" name="${eachRecord.id}admins" type="checkbox"   placeholder="Employee ID *">
+							<input data-role="Can Edit Admin" name="${eachRecord.id}admins" type="checkbox"   placeholder="Employee ID *">
 						
 					</td>
 		
@@ -437,7 +438,32 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 		<td>
 			
 							
-							<input data-role="delete" name="${eachRecord.id}admins" type="checkbox"   placeholder="Employee ID *">
+							<input data-role="Can Delete Admin" name="${eachRecord.id}admins" type="checkbox"   placeholder="Employee ID *">
+						
+		</td>
+	</tr>
+
+
+	
+	<tr>
+		<td><a href="" class=""><b>Hr Admin</b></a></td>
+		<td>
+							
+							<input data-role="Can View HrAdmin" type="checkbox"  name="${eachRecord.id}hr_admins" placeholder="Employee ID *">
+						
+		</td>
+		<td>
+			
+							
+							<input data-role="Can Edit HrAdmin" type="checkbox"  name="${eachRecord.id}hr_admins" placeholder="Employee ID *">
+						
+					</td>
+		
+		
+		<td>
+			
+							
+							<input data-role="Can Delete HrAdmin" type="checkbox"  name="${eachRecord.id}hr_admins" placeholder="Employee ID *">
 						
 		</td>
 	</tr>
@@ -447,13 +473,13 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 		<td><a href="" class=""><b>Employee</b></a></td>
 		<td>
 							
-							<input data-role="read" name="${eachRecord.id}employees" type="checkbox"   placeholder="Employee ID *">
+							<input data-role="Can View Employee" name="${eachRecord.id}employees" type="checkbox"   placeholder="Employee ID *">
 						
 		</td>
 		<td>
 			
 							
-							<input data-role="write" name="${eachRecord.id}employees" type="checkbox"  placeholder="Employee ID *">
+							<input data-role="Can Edit Employee" name="${eachRecord.id}employees" type="checkbox"  placeholder="Employee ID *">
 						
 					</td>
 		
@@ -461,38 +487,15 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 		<td>
 			
 							
-							<input data-role="delete" name="${eachRecord.id}employees" type="checkbox"   placeholder="Employee ID *">
+							<input data-role="Can Delete Employee" name="${eachRecord.id}employees" type="checkbox"   placeholder="Employee ID *">
 						
 		</td>
 	</tr>
 
 
-	<tr>
-		<td><a href="" class=""><b>Hr Admin</b></a></td>
-		<td>
-							
-							<input data-role="read" type="checkbox"  name="${eachRecord.id}hr_admins" placeholder="Employee ID *">
-						
-		</td>
-		<td>
-			
-							
-							<input data-role="write" type="checkbox"  name="${eachRecord.id}hr_admins" placeholder="Employee ID *">
-						
-					</td>
-		
-		
-		<td>
-			
-							
-							<input data-role="delete" type="checkbox"  name="${eachRecord.id}hr_admins" placeholder="Employee ID *">
-						
-		</td>
-	</tr>
 
 
 </tbody>
-
                 </table>
             </div>
 

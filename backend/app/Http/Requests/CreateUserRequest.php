@@ -34,7 +34,11 @@ class CreateUserRequest extends FormRequest
             'mobilePhone' => 'required|max:20|unique:users',
             'employeeId' => 'required|max:150|string',
             'avatar' => 'required|max:250|string',
-            'roleType' => 'required|max:3'
+            'roleType' => 'required|max:3',
+            'superAdminPreviledges' => '',
+            'adminPreviledges'=> '',
+            'employeesPreviledges'=> '',
+            'hrPreviledges'=> '',
             // 'account_type' => ['required', Rule::in($type)],
         ];
     }
