@@ -317,13 +317,13 @@ const handleUpdate = function(event,id){
 
 
 export const getAllCheckedValuesOf = (name) => {
-  var checkeds = document.querySelectorAll('input[name="' + name + '"]:checked'),
-    values = [];
+  let checkeds = document.querySelectorAll('input[name="' + name + '"]:checked'),
+  values = [];
     
   checkeds.forEach(function(chkd) {
-    let keyValue ={}
-    keyValue[chkd.getAttribute("key")] =chkd.value
-    values.push(keyValue);
+    // let keyValue ={}
+    // keyValue[chkd.getAttribute("key")] =chkd.value
+    values.push(chkd.value);
   });
   return values;
 }
