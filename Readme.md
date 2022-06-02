@@ -76,4 +76,3 @@ to explain what you have done and how to start your application, and the things 
 
 - would like us to note.
 
-- Deadline: 3 days.
