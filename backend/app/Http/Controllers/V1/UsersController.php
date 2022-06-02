@@ -21,7 +21,7 @@ class UsersController extends Controller
    * @OA\Get(
    *      path="/users",
    *      operationId="userIndex",
-   *      tags={"Blog"},
+   *      tags={"Users"},
    *      summary="Authority: All | Gets all users",
    *      description="Retrieves all users record",
    *      @OA\Response(

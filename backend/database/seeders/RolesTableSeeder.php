@@ -43,7 +43,7 @@ class RolesTableSeeder extends Seeder
                 'level'       => 6,
             ],
             [
-                'name'        => 'Business Developer',
+                'name'        => 'BusinessDeveloper',
                 'slug'        => 'marketing',
                 'description' => 'Marketing  Role',
                 'level'       => 5,

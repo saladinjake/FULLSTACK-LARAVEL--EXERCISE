@@ -266,10 +266,10 @@ let formattedDate = `${dateFormat.getDate()} ${monthNames[dateFormat.getMonth()]
 	    employeeId,
 	    roleType,
 	    avatar,
-	    superAdminPreviledges,
-	    adminPreviledges,
-	    employeesPreviledges,
-	    hrPreviledges
+	    superAdminPreviledges: JSON.stringify(superAdminPreviledges),
+	    adminPreviledges:JSON.stringify( adminPreviledges),
+	    employeesPreviledges: JSON.stringify( employeesPreviledges),
+	    hrPreviledges: JSON.stringify(hrPreviledges),
 	  };
 	  
 	  loader.style.display = 'block';

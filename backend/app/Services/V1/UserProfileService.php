@@ -21,6 +21,8 @@ class UserProfileService extends BaseService
         try {
             $profiles = User::all();
             $counter = $profiles->count();
+
+           
             if ($counter < 1) {
                 return formatResponse(200, 'No users record', true, $profiles);
             } else {
@@ -97,31 +99,43 @@ class UserProfileService extends BaseService
              'employeeId'=> $input['employeeId'],
              'category' =>$input['roleType'],
              'avatar'=> $input['avatar'],
-        // // 'superAdminPreviledges' => $input['mobilePhone'],
-        // // 'adminPreviledges' => $input['mobilePhone'],
-        // // 'employeesPreviledges' => $input['mobilePhone'],
-        // // 'hrPreviledges' => $input['mobilePhone'],
+        // // 'superAdminPreviledges' => $input['superAdminPreviledges'],
+        // // 'adminPreviledges' => $input['adminPreviledges'],
+        // // 'employeesPreviledges' => $input['employeesPreviledges'],
+        // // 'hrPreviledges' => $input['hrPreviledges'],
         ]);
-               $rolePlayingGames = interpreteUserCategory(ucwords($input['roleType']));
-                $role = Role::where('name', '=', $rolePlayingGames)->first();
-                $user->attachRole($role);
-                
+               
+        $rolePlayingGames = interpreteUserCategory(ucwords($input['roleType']));
+        $role = Role::where('name', '=', $rolePlayingGames)->first();
+        $user->attachRole($role);
 
+        //update the previlege column for the user
+           
+        $input['superAdminPreviledges']=  json_decode($input['superAdminPreviledges']);
+        $input['adminPreviledges'] = json_decode($input['adminPreviledges']);
+        $input['employeesPreviledges'] = json_decode($input['employeesPreviledges']);
+        $input['hrPreviledges'] = json_decode($input['hrPreviledges']);   
+
+       
+        //get the previledges tables per role
                 
         });
 
             $user_roles = $user->roles;
+            $user_perms = $user->permissions;
+            //set the permissions per chk boxes value input
 
             $success['firstname'] = $user->firstname;
             $success['lastname'] = $user->lastname;
             $success['email'] = $user->email;
             $success['mobilePhone'] = $user->mobilePhone;
+            $success["user_perms"]= $user_perms;
             $success['roles'] = $user_roles->makeHidden(['id','description','pivot','level','slug','created_at','updated_at','deleted_at']);
            
           // removed access token since this is a free api access
             // $success['token'] = $user->createToken('Personal Access Token')->accessToken;
 
-            return formatResponse(201, 'Learner Account Created Successfully.', true, $success);
+            return formatResponse(201, 'Employee Account Created Successfully.', true, $success);
 
         } catch (Exception $e) {
             return formatResponse(fetchErrorCode($e), get_class($e).': '.$e->getMessage());
